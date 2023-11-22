@@ -1,7 +1,9 @@
 import * as React from 'react';
+import { useLocation } from 'react-router-dom'
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import { NEWS_TRENDS_PATH, SENTIMENT_TRENDS_PATH } from '../App';
 
 
 interface HeaderProps {
@@ -9,6 +11,18 @@ interface HeaderProps {
 }
 
 export default function Header(props: HeaderProps) {
+  const { pathname } = useLocation();
+
+  function getTitle() {
+    switch (pathname) {
+      case NEWS_TRENDS_PATH:
+        return 'News Trends';
+      case SENTIMENT_TRENDS_PATH:
+        return 'Sentiment Trends';
+      default:
+        return 'Unknown';
+    }
+  }
 
   return (
     <React.Fragment>
@@ -25,13 +39,8 @@ export default function Header(props: HeaderProps) {
       >
         <Toolbar>
           <Typography color="inherit" variant="h5" component="h1">
-            News Trends
+            {getTitle()}
           </Typography>
-          {/* <Grid container alignItems="center" spacing={1}>
-            <Grid item xs>
-              
-            </Grid>
-          </Grid> */}
         </Toolbar>
       </AppBar>
     </React.Fragment>
