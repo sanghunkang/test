@@ -1,53 +1,16 @@
 import * as React from 'react';
-import Divider from '@mui/material/Divider';
+import { useLocation, useNavigate } from 'react-router-dom'
+
 import ShowChartIcon from '@mui/icons-material/ShowChart';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Drawer, { DrawerProps } from '@mui/material/Drawer';
 import List from '@mui/material/List';
-import Box from '@mui/material/Box';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import HomeIcon from '@mui/icons-material/Home';
-import PeopleIcon from '@mui/icons-material/People';
-import DnsRoundedIcon from '@mui/icons-material/DnsRounded';
-import PermMediaOutlinedIcon from '@mui/icons-material/PhotoSizeSelectActual';
-import PublicIcon from '@mui/icons-material/Public';
-import SettingsEthernetIcon from '@mui/icons-material/SettingsEthernet';
-import SettingsInputComponentIcon from '@mui/icons-material/SettingsInputComponent';
-import TimerIcon from '@mui/icons-material/Timer';
-import SettingsIcon from '@mui/icons-material/Settings';
-import PhonelinkSetupIcon from '@mui/icons-material/PhonelinkSetup';
 
-const categories = [
-  {
-    id: 'Build',
-    children: [
-      {
-        id: 'Authentication',
-        icon: <PeopleIcon />,
-        active: true,
-      },
-      { id: 'Database', icon: <DnsRoundedIcon /> },
-      { id: 'Storage', icon: <PermMediaOutlinedIcon /> },
-      { id: 'Hosting', icon: <PublicIcon /> },
-      { id: 'Functions', icon: <SettingsEthernetIcon /> },
-      {
-        id: 'Machine learning',
-        icon: <SettingsInputComponentIcon />,
-      },
-    ],
-  },
-  {
-    id: 'Quality',
-    children: [
-      { id: 'Analytics', icon: <SettingsIcon /> },
-      { id: 'Performance', icon: <TimerIcon /> },
-      { id: 'Test Lab', icon: <PhonelinkSetupIcon /> },
-    ],
-  },
-];
+import { NEWS_TRENDS_PATH, SENTIMENT_TRENDS_PATH } from '../App';
 
 const item = {
   py: '2px',
@@ -66,6 +29,21 @@ const itemCategory = {
 
 export default function Navigator(props: DrawerProps) {
   const { ...other } = props;
+  const navigate: Function = useNavigate();
+  const { pathname } = useLocation();
+
+  const menus = [
+    {
+      title: 'News Trends',
+      path: NEWS_TRENDS_PATH,
+      icon: <ShowChartIcon />,
+    },
+    {
+      title: 'Sentiment Trends',
+      path: SENTIMENT_TRENDS_PATH,
+      icon: <FavoriteIcon />,
+    },
+  ]
 
   return (
     <Drawer variant="permanent" {...other}>
@@ -73,18 +51,21 @@ export default function Navigator(props: DrawerProps) {
         <ListItem sx={{ ...item, ...itemCategory, fontSize: 22, color: '#fff' }}>
           New Analytics
         </ListItem>
-        <ListItem sx={{ ...item, ...itemCategory }}>
-          <ListItemIcon>
-            <ShowChartIcon />
-          </ListItemIcon>
-          <ListItemText>News Trends</ListItemText>
-        </ListItem>
-        <ListItem sx={{ ...item, ...itemCategory }}>
-          <ListItemIcon>
-            <FavoriteIcon />
-          </ListItemIcon>
-          <ListItemText>Sentiment Trends</ListItemText>
-        </ListItem>
+        {
+          menus.map(({ title, path, icon }) => (
+            <ListItem key={path} sx={{ ...item, ...itemCategory }}>
+              <ListItemButton
+                selected={pathname === path}
+                onClick={() => {
+                  navigate(path)
+                }}
+              >
+                <ListItemIcon>{icon}</ListItemIcon>
+                <ListItemText>{title}</ListItemText>
+              </ListItemButton>
+            </ListItem>
+          ))
+        }
       </List>
     </Drawer>
   );
