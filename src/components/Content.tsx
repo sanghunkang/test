@@ -28,7 +28,7 @@ export default function Content() {
             <Grid item xs>
               <TextField
                 fullWidth
-                placeholder="Search by email address, phone number, or user UID"
+                placeholder="Search by keywords"
                 InputProps={{
                   disableUnderline: true,
                   sx: { fontSize: 'default' },
@@ -50,7 +50,7 @@ export default function Content() {
         </Toolbar>
       </AppBar>
       <Typography sx={{ my: 5, mx: 2 }} color="text.secondary" align="center">
-        No users for this project yet
+        No results yet
       </Typography>
     </Paper>
   );
