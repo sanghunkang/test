@@ -1,27 +1,14 @@
 import * as React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+// import { useNavigate } from 'react-router-dom';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import HomeIcon from '@mui/icons-material/Home';
 import {
-  AppBar,
-  Toolbar,
-  Box,
   Grid,
   Paper,
   TextField,
 } from '@mui/material';
 
 import './Home.css';
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#2196f3', // Replace with your desired primary color
-    },
-  },
-});
-
 
 
 function Header() {
@@ -42,7 +29,7 @@ function Header() {
 }
 
 function Body() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const categories = [
     '한식',
@@ -186,21 +173,5 @@ export default function Home() {
       <Body />
       <HomePageFooter />
     </div>
-
   );
 }
-
-{/* <React.Fragment>
-
-  <AppBar
-    className='Home'
-    position='relative'
-  // position='static'
-  >
-    <h1>Cook and Save</h1>
-    <TextField />
-  </AppBar>
-  
-  <Footer />
-
-</React.Fragment> */}

@@ -3,12 +3,8 @@ import './Recipe.css';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import HomeIcon from '@mui/icons-material/Home';
 import {
-  AppBar,
-  Toolbar,
-  Box,
+  Button,
   Grid,
-  Paper,
-  TextField,
 } from '@mui/material';
 
 function Banner() {
@@ -77,6 +73,9 @@ function RecipeDetails() {
         통감자 오븐구이
       </h1>
       <Grid container>
+        <Grid xs={12}>
+          <Button>남은 재료 레시피</Button>
+        </Grid>
         {
           steps.map((step, i) => {
             return (
