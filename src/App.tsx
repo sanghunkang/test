@@ -2,11 +2,15 @@ import './App.css';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
 import Home from './pages/Home';
+import Recipe from './pages/Recipe';
+
 import Paperbase from './components/Paperbase';
 import NotFound from './components/NotFound'
 
-export const NEWS_TRENDS_PATH = '/news-trends';
 export const HOME_PATH = '/home';
+export const RECIPE_PATH = '/recipe';
+
+export const NEWS_TRENDS_PATH = '/news-trends';
 export const SENTIMENT_TRENDS_PATH = '/sentiment-trends';
 
 function App() {
@@ -19,6 +23,9 @@ function App() {
         }
       />
       <Route path={HOME_PATH} element={<Home />} />
+      <Route path={RECIPE_PATH} element={<Recipe />} />
+
+
       <Route path={NEWS_TRENDS_PATH} element={<Paperbase />} />
       <Route path={SENTIMENT_TRENDS_PATH} element={<Paperbase />} />
       <Route path="*" element={<NotFound />} />
