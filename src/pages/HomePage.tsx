@@ -15,6 +15,7 @@ import {
 
 import {
   RECIPE_PAGE_PATH,
+  HOME_PAGE_PATH,
   STYLES_PAGE_PATH,
   REPORT_PAGE_PATH,
 } from '../App';
@@ -92,8 +93,8 @@ function HomePageBody() {
             <Grid item xs={3} key={el}>
               <Paper>
                 <div className='Body-category'>
-                  <div>
-                    <FavoriteIcon fontSize='large' />
+                  <div className='app-container'>
+                    <img src={'sample.png'} alt='여기에 그림이 들어갈 예정'></img>
                   </div>
                   <div>
                     {el}
@@ -171,6 +172,7 @@ function HomePageFooter() {
       <Grid item xs={4} spacing={2}>
         <HomeIcon
           sx={{ fontSize: '48px' }}
+          onClick={(e) => { navigate(HOME_PAGE_PATH) }}
         />
       </Grid>
       <Grid item xs={2} spacing={2}>

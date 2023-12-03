@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import {
   Grid,
   TextField,
+  Paper,
 } from '@mui/material';
 
 const styles = [
@@ -69,24 +70,26 @@ function Style({ style }: IProps) {
   const navigate = useNavigate();
 
   return (
-    <div >
+    <Paper className='style'>
       <div onClick={(e) => navigate(`/recommendation?id=${style.name}`)}>
         <h1>#{style.name}</h1>
       </div>
       <div>
         <Grid container>
-          <Grid item className='style-image' xs={4}>
-            <img src={style.images[0]} alt='여기에 그림이 들어갈 예정'></img>
-          </Grid>
-          <Grid item className='style-image' xs={4}>
-            <img src={style.images[1]} alt='여기에 그림이 들어갈 예정'></img>
-          </Grid>
-          <Grid item className='style-image' xs={4}>
-            <img src={style.images[2]} alt='여기에 그림이 들어갈 예정'></img>
-          </Grid>
+          {
+            style.images.map((image: string) => {
+              return (
+                <Grid item className='style-container' xs={4}>
+                  <div className='app-container'>
+                    <img src={image} alt='여기에 그림이 들어갈 예정'></img>
+                  </div>
+                </Grid>
+              )
+            })
+          }
         </Grid>
       </div>
-    </div>
+    </Paper>
   )
 }
 
@@ -95,7 +98,6 @@ export default function StylesPage() {
     <div>
       <StylesPageHeader />
       <div className='app-body'>
-
         {styles.map((style) => {
           return (
             <Style style={style} />)

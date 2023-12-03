@@ -6,16 +6,25 @@ import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined'; // 2) 공유
 import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined'; // 3) 책갈피
 // import CollectionsBookmarkOutlinedIcon from '@mui/icons-material/CollectionsBookmarkOutlined'; // 3) 책갈피
 import TextsmsOutlinedIcon from '@mui/icons-material/TextsmsOutlined'; // 4) 노트보기
-
 import {
   Button,
   Grid,
 } from '@mui/material';
 
+import { useNavigate } from 'react-router-dom';
+import {
+  // RECIPE_PAGE_PATH,
+  HOME_PAGE_PATH,
+  // STYLES_PAGE_PATH,
+  // REPORT_PAGE_PATH,
+} from '../App';
+
 function Banner() {
   return (
     <div className='Banner'>
-      <img src='sample.png' alt='여기에 그림이 들어갈 예정'></img>
+      <div className='app-container'>
+        <img src='sample.png' alt='여기에 그림이 들어갈 예정'></img>
+      </div>
     </div>
   )
 }
@@ -101,6 +110,9 @@ function RecipeDetails() {
 }
 
 function RecipePageFooter() {
+  const navigate = useNavigate();
+
+
   return (
     <Grid container className='Footer'>
       <Grid item xs={2} spacing={2}>
@@ -110,7 +122,10 @@ function RecipePageFooter() {
         <ShareOutlinedIcon sx={{ fontSize: '32px' }} />
       </Grid>
       <Grid item xs={4} spacing={2}>
-        <HomeIcon sx={{ fontSize: '48px' }} />
+        <HomeIcon
+          sx={{ fontSize: '48px' }}
+          onClick={(e) => { navigate(HOME_PAGE_PATH) }}
+        />
       </Grid>
       <Grid item xs={2} spacing={2}>
         <BookmarkBorderOutlinedIcon sx={{ fontSize: '32px' }} />
