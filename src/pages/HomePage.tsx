@@ -1,6 +1,5 @@
 import * as React from 'react';
 import './HomePage.css';
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import HomeIcon from '@mui/icons-material/Home';
 import TagOutlinedIcon from '@mui/icons-material/TagOutlined';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
@@ -41,16 +40,39 @@ function HomePageHeader() {
 }
 
 function HomePageBody() {
-
   const categories = [
-    '한식',
-    '중식',
-    '일식',
-    '아시안',
-    '양식',
-    '돈까쓰',
-    '분식',
-    '디저트',
+    {
+      name: '한식',
+      img: '1한식.png',
+    },
+    {
+      name: '중식',
+      img: '2중식.png',
+    },
+    {
+      name: '일식',
+      img: '3일식.png',
+    },
+    {
+      name: '아시안',
+      img: '4아시안.png',
+    },
+    {
+      name: '양식',
+      img: '5양식.png',
+    },
+    {
+      name: '돈까쓰',
+      img: '6돈까쓰.png',
+    },
+    {
+      name: '분식',
+      img: '7분식.png',
+    },
+    {
+      name: '디저트',
+      img: '8디저트.png',
+    },
   ];
 
   const rankings = [
@@ -88,16 +110,16 @@ function HomePageBody() {
       spacing={2}
     >
       {
-        categories.map((el) => {
+        categories.map((category) => {
           return (
-            <Grid item xs={3} key={el}>
+            <Grid item xs={3} key={category.name}>
               <Paper>
                 <div className='Body-category'>
                   <div className='app-container'>
-                    <img src={'sample.png'} alt='여기에 그림이 들어갈 예정'></img>
+                    <img src={category.img} alt='여기에 그림이 들어갈 예정'></img>
                   </div>
                   <div>
-                    {el}
+                    <h5>{category.name}</h5>
                   </div>
                 </div>
               </Paper>
@@ -112,7 +134,6 @@ function HomePageBody() {
               <h1>실시간 인기 음식 컨텐츠</h1>
             </div>
             {
-              //  </div> onClick={(e) => navigate(`/recipe?id=${recipe.id}`)}></Paper>
               recipes.map((recipe) => {
                 return (
                   <div>
@@ -159,33 +180,54 @@ function HomePageFooter() {
   const navigate = useNavigate();
 
   return (
-    <Grid container className='Footer'>
-      <Grid item xs={2} spacing={2}>
-        <FavoriteIcon sx={{ fontSize: '32px' }} />
+    <Grid container className='app-footer'>
+      <Grid item xs={3}>
+        <div>
+
+          <HomeIcon
+            sx={{ fontSize: '32px' }}
+            onClick={(e) => { navigate(HOME_PAGE_PATH) }}
+          />
+        </div>
+        <div>
+          홈
+        </div>
       </Grid>
-      <Grid item xs={2} spacing={2}>
-        <RestaurantOutlinedIcon
-          sx={{ fontSize: '32px' }}
-          onClick={(e) => { navigate(RECIPE_PAGE_PATH) }}
-        />
+      <Grid item xs={3}>
+        <div>
+
+          <RestaurantOutlinedIcon
+            sx={{ fontSize: '32px' }}
+            onClick={(e) => { navigate(RECIPE_PAGE_PATH) }}
+          />
+        </div>
+        <div>
+          레시피
+        </div>
       </Grid>
-      <Grid item xs={4} spacing={2}>
-        <HomeIcon
-          sx={{ fontSize: '48px' }}
-          onClick={(e) => { navigate(HOME_PAGE_PATH) }}
-        />
+      <Grid item xs={3}>
+        <div>
+
+          <TagOutlinedIcon
+            sx={{ fontSize: '32px' }}
+            onClick={(e) => { navigate(STYLES_PAGE_PATH) }}
+          />
+        </div>
+        <div>
+          스타일
+        </div>
       </Grid>
-      <Grid item xs={2} spacing={2}>
-        <TagOutlinedIcon
-          sx={{ fontSize: '32px' }}
-          onClick={(e) => { navigate(STYLES_PAGE_PATH) }}
-        />
-      </Grid>
-      <Grid item xs={2} spacing={2}>
-        <PersonOutlineOutlinedIcon
-          sx={{ fontSize: '32px' }}
-          onClick={(e) => { navigate(REPORT_PAGE_PATH) }}
-        />
+      <Grid item xs={3}>
+        <div>
+          <PersonOutlineOutlinedIcon
+            sx={{ fontSize: '32px' }}
+            onClick={(e) => { navigate(REPORT_PAGE_PATH) }}
+          />
+        </div>
+        <div>
+          마이페이지
+        </div>
+
       </Grid>
     </Grid>
   );

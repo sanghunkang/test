@@ -1,15 +1,23 @@
 import * as React from 'react';
 import './RecommendationPage.css';
 
-
+// import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
+import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
+// import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
+import SmsOutlinedIcon from '@mui/icons-material/SmsOutlined';
 import {
   TextField,
   Paper,
   Grid,
 } from '@mui/material';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 
 function RecommendationPageHeader() {
+  const { search } = useLocation();
+  const params = new URLSearchParams(search);
+  const style = params.get('style') || '';
+
   return (
     <div className='app-header'>
       <div>
@@ -18,7 +26,7 @@ function RecommendationPageHeader() {
       <div className='Header-input'>
         <TextField
           fullWidth
-          label="Outlined"
+          label={'#' + style}
           variant="outlined"
         />
       </div>
@@ -27,7 +35,14 @@ function RecommendationPageHeader() {
 }
 
 
+const sharings = [
+
+]
+
 function Plating() {
+  const comments = [1];
+  const likes = 23;
+
   return (
     <Paper>
       <div className='plating'>
@@ -36,11 +51,18 @@ function Plating() {
         </div>
         <Grid container>
           <Grid item xs={4}>
-            <p>댓글</p>
+            <p>
+              <ThumbUpOutlinedIcon />
+              {likes}
+            </p>
           </Grid>
           <Grid item xs={4}>
-            <p>좋아요</p>
+            <p>
+              <SmsOutlinedIcon />
+              {comments.length}
+            </p>
           </Grid>
+
           <Grid item xs={4}></Grid>
         </Grid>
       </div>

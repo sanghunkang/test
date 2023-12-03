@@ -2,6 +2,7 @@ import './App.css';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
 import HomePage from './pages/HomePage';
+import RecipeListPage from './pages/RecipeListPage';
 import RecipePage from './pages/RecipePage';
 import StylesPage from './pages/StylesPage';
 import RecommendationPage from './pages/RecommendationPage';
@@ -29,7 +30,8 @@ function App() {
         }
       />
       <Route path={HOME_PAGE_PATH} element={<HomePage />} />
-      <Route path={RECIPE_PAGE_PATH} element={<RecipePage />} />
+      <Route path={`${RECIPE_PAGE_PATH}/*`} element={<RecipePage />} />
+      <Route path={RECIPE_PAGE_PATH} element={<RecipeListPage />} />
       <Route path={STYLES_PAGE_PATH} element={<StylesPage />} />
       <Route path={RECOMMENDATION_PAGE_PATH} element={<RecommendationPage />} />
       <Route path={REPORT_PAGE_PATH} element={<ReportPage />} />
