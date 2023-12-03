@@ -1,7 +1,12 @@
 import * as React from 'react';
-import './Recipe.css';
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import './RecipePage.css';
 import HomeIcon from '@mui/icons-material/Home';
+import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined'; // 1) 요약
+import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined'; // 2) 공유
+import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined'; // 3) 책갈피
+// import CollectionsBookmarkOutlinedIcon from '@mui/icons-material/CollectionsBookmarkOutlined'; // 3) 책갈피
+import TextsmsOutlinedIcon from '@mui/icons-material/TextsmsOutlined'; // 4) 노트보기
+
 import {
   Button,
   Grid,
@@ -99,19 +104,19 @@ function RecipePageFooter() {
   return (
     <Grid container className='Footer'>
       <Grid item xs={2} spacing={2}>
-        <FavoriteIcon sx={{ fontSize: '32px' }} />
+        <DescriptionOutlinedIcon sx={{ fontSize: '32px' }} />
       </Grid>
       <Grid item xs={2} spacing={2}>
-        <FavoriteIcon sx={{ fontSize: '32px' }} />
+        <ShareOutlinedIcon sx={{ fontSize: '32px' }} />
       </Grid>
       <Grid item xs={4} spacing={2}>
         <HomeIcon sx={{ fontSize: '48px' }} />
       </Grid>
       <Grid item xs={2} spacing={2}>
-        <FavoriteIcon sx={{ fontSize: '32px' }} />
+        <BookmarkBorderOutlinedIcon sx={{ fontSize: '32px' }} />
       </Grid>
       <Grid item xs={2} spacing={2}>
-        <FavoriteIcon sx={{ fontSize: '32px' }} />
+        <TextsmsOutlinedIcon sx={{ fontSize: '32px' }} />
       </Grid>
     </Grid>
   );

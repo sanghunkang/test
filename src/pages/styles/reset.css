@@ -14,12 +14,12 @@ body {
 
 	font-family: 'Noto Sans KR', sans-serif;
 	color: #4B4B4B;
-	background-color: #5D5FEF;
+	/* background-color: #5D5FEF; */
 }
 
-div {
+/* div {
 	word-break: keep-all;
-}
+} */
 
 button,
 input,
