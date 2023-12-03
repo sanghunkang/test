@@ -6,3 +6,33 @@
   overflow: hidden;
   opacity: 0;
 }
+
+.app-header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background-color: gold;
+  color: white;
+  text-align: center;
+}
+
+.app-body {
+  position: relative;
+  top: 20vh;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.app-footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  min-height: 10vh;
+  background-color: gold;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}

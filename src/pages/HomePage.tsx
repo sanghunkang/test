@@ -1,19 +1,30 @@
 import * as React from 'react';
-// import { useNavigate } from 'react-router-dom';
+import './HomePage.css';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import HomeIcon from '@mui/icons-material/Home';
+import TagOutlinedIcon from '@mui/icons-material/TagOutlined';
+import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
+import RestaurantOutlinedIcon from '@mui/icons-material/RestaurantOutlined';
+// import RamenDiningOutlinedIcon from '@mui/icons-material/RamenDiningOutlined';
+// import SoupKitchenOutlinedIcon from '@mui/icons-material/SoupKitchenOutlined';
 import {
   Grid,
   Paper,
   TextField,
 } from '@mui/material';
 
-import './Home.css';
+import {
+  RECIPE_PAGE_PATH,
+  STYLES_PAGE_PATH,
+  REPORT_PAGE_PATH,
+} from '../App';
+import { useNavigate } from 'react-router-dom';
 
 
-function Header() {
+
+function HomePageHeader() {
   return (
-    <div className='Header'>
+    <div className='app-header'>
       <div>
         <h1>Cook and Save</h1>
       </div>
@@ -28,8 +39,7 @@ function Header() {
   );
 }
 
-function Body() {
-  // const navigate = useNavigate();
+function HomePageBody() {
 
   const categories = [
     '한식',
@@ -72,7 +82,7 @@ function Body() {
 
   return (
     <Grid
-      className='Body'
+      className='app-body'
       container
       spacing={2}
     >
@@ -145,22 +155,35 @@ function Body() {
 }
 
 function HomePageFooter() {
+  const navigate = useNavigate();
+
   return (
     <Grid container className='Footer'>
       <Grid item xs={2} spacing={2}>
         <FavoriteIcon sx={{ fontSize: '32px' }} />
       </Grid>
       <Grid item xs={2} spacing={2}>
-        <FavoriteIcon sx={{ fontSize: '32px' }} />
+        <RestaurantOutlinedIcon
+          sx={{ fontSize: '32px' }}
+          onClick={(e) => { navigate(RECIPE_PAGE_PATH) }}
+        />
       </Grid>
       <Grid item xs={4} spacing={2}>
-        <HomeIcon sx={{ fontSize: '48px' }} />
+        <HomeIcon
+          sx={{ fontSize: '48px' }}
+        />
       </Grid>
       <Grid item xs={2} spacing={2}>
-        <FavoriteIcon sx={{ fontSize: '32px' }} />
+        <TagOutlinedIcon
+          sx={{ fontSize: '32px' }}
+          onClick={(e) => { navigate(STYLES_PAGE_PATH) }}
+        />
       </Grid>
       <Grid item xs={2} spacing={2}>
-        <FavoriteIcon sx={{ fontSize: '32px' }} />
+        <PersonOutlineOutlinedIcon
+          sx={{ fontSize: '32px' }}
+          onClick={(e) => { navigate(REPORT_PAGE_PATH) }}
+        />
       </Grid>
     </Grid>
   );
@@ -169,8 +192,8 @@ function HomePageFooter() {
 export default function Home() {
   return (
     <div>
-      <Header />
-      <Body />
+      <HomePageHeader />
+      <HomePageBody />
       <HomePageFooter />
     </div>
   );

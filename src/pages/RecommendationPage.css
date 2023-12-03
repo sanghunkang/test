@@ -1,0 +1,8 @@
+.plating {
+    padding: 10px;
+    max-height: 10vh;
+}
+
+.plating>img {
+    max-height: 10vh;
+}

@@ -1,0 +1,7 @@
+.style-image {
+    max-height: 10vh;
+}
+
+.style-image>img {
+    max-height: 15vh;
+}
