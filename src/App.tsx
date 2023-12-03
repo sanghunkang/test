@@ -2,6 +2,7 @@ import './App.css';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
 import HomePage from './pages/HomePage';
+import RecipeListPage from './pages/RecipeListPage';
 import RecipePage from './pages/RecipePage';
 import StylesPage from './pages/StylesPage';
 import RecommendationPage from './pages/RecommendationPage';
@@ -10,10 +11,10 @@ import ReportPage from './pages/ReportPage';
 import Paperbase from './components/Paperbase';
 import NotFound from './components/NotFound'
 
-export const HOME_PATH = '/home';
+export const HOME_PAGE_PATH = '/home';
 export const RECIPE_PAGE_PATH = '/recipe';
 export const REPORT_PAGE_PATH = '/report';
-export const STYLES_PAGE_PATH = '/Styles';
+export const STYLES_PAGE_PATH = '/styles';
 export const RECOMMENDATION_PAGE_PATH = '/recommendation';
 
 export const NEWS_TRENDS_PATH = '/news-trends';
@@ -28,8 +29,9 @@ function App() {
           <Navigate to={NEWS_TRENDS_PATH} />
         }
       />
-      <Route path={HOME_PATH} element={<HomePage />} />
-      <Route path={RECIPE_PAGE_PATH} element={<RecipePage />} />
+      <Route path={HOME_PAGE_PATH} element={<HomePage />} />
+      <Route path={`${RECIPE_PAGE_PATH}/*`} element={<RecipePage />} />
+      <Route path={RECIPE_PAGE_PATH} element={<RecipeListPage />} />
       <Route path={STYLES_PAGE_PATH} element={<StylesPage />} />
       <Route path={RECOMMENDATION_PAGE_PATH} element={<RecommendationPage />} />
       <Route path={REPORT_PAGE_PATH} element={<ReportPage />} />

@@ -1,7 +1,10 @@
-.style-image {
-    max-height: 10vh;
+.style {
+    background-color: beige;
+    display: block;
+    margin: 10px;
 }
 
-.style-image>img {
-    max-height: 15vh;
+.style-container {
+    padding: 5px;
+    /* max-height: 10vh; */
 }
