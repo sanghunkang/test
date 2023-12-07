@@ -10,7 +10,7 @@ const Chart = (props) => {
   const maximumAmountOfChartDatas = Math.max(...amountOfChartDatas);
 
   return (
-    <div className="chart" aria-label={filterBaseYear + "년의 월 별 지출 차트"}>
+    <div className="chart" aria-label={filterBaseYear + "년의 월별 절약 차트"}>
       {props.chartDatas.map((expense) => (
         <ChartBar
           key={expense.label}

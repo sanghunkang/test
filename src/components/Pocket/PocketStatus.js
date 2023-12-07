@@ -21,7 +21,7 @@ const PocketStatus = (props) => {
           total.balance += +item.amount;
           total.income += +item.amount;
         } else {
-          total.balance -= +item.amount;
+          total.balance += -item.amount;
           total.expense += +item.amount;
         }
       });
@@ -35,22 +35,22 @@ const PocketStatus = (props) => {
   return (
     <div className="pocket__status">
       <div className="pocket__status-title">
-        <h1 className="fs-normal fw-light">{twoDigitYear}년 자산 현황</h1>
-        <strong className="fs-title">
+        <h1 className="fs-normal fw-light">{twoDigitYear}년 절약 현황</h1>
+        <strong className="fs-title fc-yellow">
           {addComma(totalBalance.toString())}원
         </strong>
       </div>
 
       <div className="pocket__status-detail">
         <div className="pocket__status-detail--desc">
-          <span className="fs-normal fw-light">수입</span>
+          <span className="fs-normal fw-light">외식비용</span>
           <strong className="fs-emphasis fc-green">
             {addComma(totalIncome.toString())}원
           </strong>
         </div>
         <div className="pocket__status-detail--desc">
-          <span className="fs-normal fw-light">지출</span>
-          <strong className="fs-emphasis fc-red">
+          <span className="fs-normal fw-light">요리비용</span>
+          <strong className="fs-emphasis fc-yellow">
             {addComma(totalExpense.toString())}원
           </strong>
         </div>

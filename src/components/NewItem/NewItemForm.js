@@ -140,7 +140,7 @@ const NewItemForm = () => {
               required
             />
             <label htmlFor="income" className="fs-small">
-              수입
+              외식
             </label>
           </div>
           <div className="amount__expense">
@@ -154,14 +154,14 @@ const NewItemForm = () => {
               required
             />
             <label htmlFor="expense" className="fs-small">
-              지출
+              요리
             </label>
           </div>
         </div>
       </div>
 
       <div className="new-item__form-actions">
-        <button type="submit" className="btn-purple">
+        <button type="submit" className="btn-yellow">
           등록
         </button>
         <button
