@@ -75,10 +75,10 @@ function HomePageBody() {
             {
               recipes.map((recipe) => {
                 return (
-                  <div>
-                    <a href={`/recipe/${recipe.id}`}>
-                      <p>{recipe.description}</p>
-                    </a>
+                  <div  onClick={(e) => navigate(`/recipe/${recipe.id}`)}>
+                    <h5>
+                      {recipe.description}
+                    </h5>
                   </div>
                 )
               })
