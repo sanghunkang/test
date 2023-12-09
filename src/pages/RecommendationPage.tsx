@@ -26,6 +26,15 @@ function Plating({ recipe }: PlatingProps) {
   return (
     <Paper>
       <div className='plating'>
+        {/* <iframe
+          title="https://www.instagram.com/p/CzgUI6sxFwU/embed/"
+          src="https://www.instagram.com/p/CzgUI6sxFwU/embed/"
+          width="100%"
+        // height="600" scrolling="no" 
+        >
+
+        </iframe> */}
+
         <div className='app-container'>
           <img src={recipe.img} alt='여기에 그림이 들어갈 예정'></img>
         </div>

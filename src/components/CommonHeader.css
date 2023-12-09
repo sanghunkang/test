@@ -6,6 +6,7 @@
 }
 
 .Header-input {
+    color: #fff;
     padding: 20px;
 }
 
@@ -16,4 +17,19 @@
 .Body-card {
     background-color: beige;
     padding: 10px;
+}
+
+.box {
+    /* width: 150px;
+    height: 150px;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer; */
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+.clicked {
+    box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.3);
 }

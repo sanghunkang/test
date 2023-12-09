@@ -6,6 +6,8 @@ import {
   TextField,
   Paper,
 } from '@mui/material';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+
 import { RECIPE_PAGE_PATH, RECOMMENDATION_PAGE_PATH } from '../App';
 import { getRecipes } from '../app/sampleData';
 import { CommonHeader } from '../components/CommonHeader';
@@ -20,30 +22,33 @@ function Style({ style }: StyleProps) {
 
   return (
     <Paper className='style'>
-      <div onClick={(e) => navigate(RECOMMENDATION_PAGE_PATH + `?query=${style}`)}>
-        <h1>#{style}</h1>
-      </div>
-      <div>
-        <Grid container spacing={1}>
-          {
-            recipes.map((recipe, i) => {
-              return (
-                <Grid
-                  item
-                  className='style-container'
-                  xs={4}
-                  onClick={(e) => navigate(RECIPE_PAGE_PATH + `/${recipe.id}`)}
-                >
-                  <div className='app-container'>
-                    <img src={recipe.img} alt='여기에 그림이 들어갈 예정'></img>
-                  </div>
-                </Grid>
-              )
-            })
-          }
+      <Grid container spacing={1} onClick={(e) => navigate(RECOMMENDATION_PAGE_PATH + `?query=${style}`)}>
+        <Grid item xs={11}>
+          <h3>#{style}</h3>
         </Grid>
-      </div>
-    </Paper>
+        <Grid item xs={1}>
+          <ArrowForwardIosIcon />
+        </Grid>
+      </Grid>
+      <Grid container spacing={1}>
+        {
+          recipes.map((recipe, i) => {
+            return (
+              <Grid
+                item
+                className='style-container'
+                xs={4}
+                onClick={(e) => navigate(RECIPE_PAGE_PATH + `/${recipe.id}`)}
+              >
+                <div className='app-container'>
+                  <img src={recipe.img} alt='여기에 그림이 들어갈 예정'></img>
+                </div>
+              </Grid>
+            )
+          })
+        }
+      </Grid>
+    </Paper >
   )
 }
 
