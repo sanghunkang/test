@@ -118,6 +118,16 @@ export const recipes: Recipe[] = [
     tags: [],
     ingredients: [],
   },
+  {
+    id: 3,
+    name: '{{여기에 텍스트 입력}}',
+    style: '{{여기에 텍스트 입력}}',
+    description: '파이브가이즈 더현대 서울 오픈! 웨이팅 대신 집에서 땅콩기름 감자튀김과 햄버거를!',
+    img: '2중식.png',
+    steps: [],
+    tags: [],
+    ingredients: [],
+  },
 ];
 
 export function getRecipes(): Recipe[] {

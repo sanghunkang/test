@@ -1,0 +1,6 @@
+.grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    /* Adjust the space between grid items */
+}

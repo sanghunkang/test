@@ -1,0 +1,19 @@
+.app-container img {
+    /* Ensure the image fits within the container */
+    width: 100%;
+    height: auto;
+    /* Other image styles */
+}
+
+.Header-input {
+    padding: 20px;
+}
+
+.Body-category {
+    text-align: center;
+}
+
+.Body-card {
+    background-color: beige;
+    padding: 10px;
+}

@@ -10,30 +10,10 @@ import {
   Paper,
   Grid,
 } from '@mui/material';
+import { CommonHeader } from '../components/CommonHeader';
 import { useLocation } from 'react-router-dom';
 import { getRecipes } from '../app/sampleData';
 import { Recipe } from '../app/types';
-
-function RecommendationPageHeader() {
-  const { search } = useLocation();
-  const params = new URLSearchParams(search);
-  const style = params.get('style') || '';
-
-  return (
-    <div className='app-header'>
-      <div>
-        <h1>Cook and Save</h1>
-      </div>
-      <div className='Header-input'>
-        <TextField
-          fullWidth
-          label={'#' + style}
-          variant="outlined"
-        />
-      </div>
-    </div>
-  );
-}
 
 interface PlatingProps {
   recipe: Recipe;
@@ -75,7 +55,7 @@ export default function RecommendationPage() {
 
   return (
     <div className='recommendation-page'>
-      <RecommendationPageHeader />
+      <CommonHeader />
       <div className='app-body'>
         <Grid container>
           <Grid item xs={6}>
