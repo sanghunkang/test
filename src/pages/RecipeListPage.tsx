@@ -20,17 +20,19 @@ interface RecipeRowProps {
 function RecipeRow({ recipe }: RecipeRowProps) {
 
 
-
   return (
-    <Paper>
-      <Grid container>
-        <Grid item className='app-container' xs={2}>
-          <img src={recipe.img} alt='여기에 그림이 들어갈 예정'></img>
+    <Paper style={{ marginBottom: '12px' }}>
+      <Grid container spacing={2}>
+        <Grid item className='app-container' xs={4}>
+          <img src={recipe.img} alt='여기에 그림이 들어갈 예정' style={{ borderRadius: '12px', width: '100%' }} ></img>
         </Grid>
-        <Grid item className='app-container' xs={10}>
-          <a href={`/recipe/${recipe.id}`}>
+        <Grid item className='app-container' xs={8}>
+          <a href={`/recipe/${recipe.id}`} style={{fontSize: '13px'}}>
             {recipe.name}
           </a>
+          <div style={{ fontSize: '10px', marginTop: '-7px', color: 'grey' }}><br />외식비용: {recipe.outcost} <span style={{fontSize:'10px', color: 'black' }}>vs 요리비용: {recipe.selfcost}</span></div>
+          <div style={{ fontSize: '12px', marginTop: '-12px', color: 'red' }}><br />절약금액: {recipe.outcost - recipe.selfcost}↓</div>
+          <div style={{ fontSize: '10px',marginTop: '-3px', color: 'grey' }}><br />{`${recipe.level} | ${recipe.time}`}</div>
         </Grid>
       </Grid>
     </Paper>
@@ -69,6 +71,12 @@ function RecipeListPageBody() {
 
   return (
     <div className='app-body'>
+      <div>
+        <p style={{ fontSize: '12px' }}>{`총 `}
+          <span style={{ color: 'orange', fontSize: '14px' }}>{recipes.length}</span>
+         {`개 검색결과`}
+        </p>
+      </div>
       {
         recipes.map((recipe, i) => <RecipeRow recipe={recipe} />)
       }
