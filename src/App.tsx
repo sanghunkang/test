@@ -15,7 +15,6 @@ import StylesPage from './pages/StylesPage';
 import RecommendationPage from './pages/RecommendationPage';
 import ReportPage from './pages/ReportPage';
 
-import Paperbase from './components/Paperbase';
 import NotFound from './components/NotFound'
 
 export const HOME_PAGE_PATH = '/home';
@@ -60,7 +59,7 @@ function App() {
       <Route
         path="/"
         element={
-          <Navigate to={NEWS_TRENDS_PATH} />
+          <Navigate to={HOME_PAGE_PATH} />
         }
       />
       <Route path={HOME_PAGE_PATH} element={<HomePage />} />
@@ -71,8 +70,8 @@ function App() {
       <Route path={REPORT_PAGE_PATH} element={<ReportPage />} />
 
 
-      <Route path={NEWS_TRENDS_PATH} element={<Paperbase />} />
-      <Route path={SENTIMENT_TRENDS_PATH} element={<Paperbase />} />
+      {/* <Route path={NEWS_TRENDS_PATH} element={<Paperbase />} /> */}
+      {/* <Route path={SENTIMENT_TRENDS_PATH} element={<Paperbase />} /> */}
       <Route path="*" element={<NotFound />} />
     </Routes >
   );
