@@ -10,12 +10,13 @@ import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlin
 import TextsmsOutlinedIcon from '@mui/icons-material/TextsmsOutlined'; // 4) 노트보기
 import {
   Button,
+  Divider,
   Grid,
 } from '@mui/material';
 
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {
-  // RECIPE_PAGE_PATH,
+  RECIPE_PAGE_PATH,
   // HOME_PAGE_PATH,
   // STYLES_PAGE_PATH,
   // REPORT_PAGE_PATH,
@@ -29,6 +30,7 @@ function RecipeDetails() {
   const recipeId = parseInt(parts[parts.length - 1]); //
   const recipes = getRecipes();
   const recipe = recipes[recipeId - 1];
+  const navigate = useNavigate();
 
   return (
     <div>
@@ -36,19 +38,52 @@ function RecipeDetails() {
 
       <div className='Banner'>
         <div className='app-container'>
-          <img src='/sample.png' alt='여기에 그림이 들어갈 예정' />
+          <img src={recipe.img} alt='여기에 그림이 들어갈 예정' />
         </div>
       </div>
       <div className='recipe-details'>
+        <p>
+          심심함을 달래기 위한 텍스트
+        </p>
         <h1>
           {recipe.name}
         </h1>
         <Grid container>
+          <Grid item xs={3}>
+            <h3>난이도</h3>
+          </Grid>
+          <Grid item xs={3}>
+            <p>{recipe.level}</p>
+          </Grid>
+          <Grid item xs={3}>
+            <h3>배달비용</h3>
+          </Grid>
+          <Grid item xs={3}>
+            <p>{50000}원</p>
+          </Grid>
+        </Grid>
+        <Grid container>
+          <Grid item xs={3}>
+            <h3>조리시간</h3>
+          </Grid>
+          <Grid item xs={3}>
+            <p>{recipe.time}</p>
+          </Grid>
+          <Grid item xs={3}>
+            <h3>요리비용</h3>
+          </Grid>
+          <Grid item xs={3}>
+            <p>{7000}원</p>
+          </Grid>
+        </Grid>
+        <Divider />
+        <Grid container>
           <Grid item xs={6}>
-            <p>xxxx</p>
           </Grid>
           <Grid item xs={6}>
-            <Button>남은 재료 레시피</Button>
+            <Button onClick={(e) => navigate(RECIPE_PAGE_PATH + `?query=남는재료`)}>
+              <h3>남은 재료 레시피</h3>
+            </Button>
           </Grid>
         </Grid>
         <Grid container>
@@ -63,6 +98,7 @@ function RecipeDetails() {
             })
           }
         </Grid>
+        <Divider />
         <Grid container>
           {
             recipe.steps.map((step, i) => {

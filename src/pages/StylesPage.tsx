@@ -8,29 +8,11 @@ import {
 } from '@mui/material';
 import { RECIPE_PAGE_PATH, RECOMMENDATION_PAGE_PATH } from '../App';
 import { getRecipes } from '../app/sampleData';
+import { CommonHeader } from '../components/CommonHeader';
 
 interface StyleProps {
   style: string;
 }
-
-
-function StylesPageHeader() {
-  return (
-    <div className='app-header'>
-      <div>
-        <h1>Cook and Save</h1>
-      </div>
-      <div className='Header-input'>
-        <TextField
-          fullWidth
-          label="Outlined"
-          variant="outlined"
-        />
-      </div>
-    </div>
-  );
-}
-
 
 function Style({ style }: StyleProps) {
   const navigate = useNavigate();
@@ -42,7 +24,7 @@ function Style({ style }: StyleProps) {
         <h1>#{style}</h1>
       </div>
       <div>
-        <Grid container>
+        <Grid container spacing={1}>
           {
             recipes.map((recipe, i) => {
               return (
@@ -87,7 +69,7 @@ export default function StylesPage() {
 
   return (
     <div>
-      <StylesPageHeader />
+      <CommonHeader />
       <StylesPageBody />
     </div>
   )

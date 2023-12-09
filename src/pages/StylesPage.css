@@ -1,9 +1,11 @@
 .style {
     background-color: beige;
+    margin-top: 5px;
     display: block;
+    padding: 10px;
 }
 
 .style-container {
-    padding: 5px;
+
     /* max-height: 10vh; */
 }
