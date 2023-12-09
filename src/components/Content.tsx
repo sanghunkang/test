@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import { useLocation, useNavigate } from "react-router-dom";
+import { getAnalytics, logEvent } from "firebase/analytics";
+
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Paper from '@mui/material/Paper';
@@ -10,12 +13,11 @@ import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import RefreshIcon from '@mui/icons-material/Refresh';
 
-
 import NewsTrendChart from './NewsTrendChart';
 import SentimentTrendChart from './SentimentTrendChart';
-import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function Content() {
+  const analytics = getAnalytics();
   const navigate = useNavigate();
   const { pathname, search } = useLocation();
 
@@ -30,6 +32,9 @@ export default function Content() {
     if (inputText) {
       url += `?search=${inputText}`;
     };
+
+    logEvent(analytics, "search", { inputText })
+
 
     navigate(url);
   };
