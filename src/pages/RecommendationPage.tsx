@@ -2,16 +2,17 @@ import * as React from 'react';
 import './RecommendationPage.css';
 
 // import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
-import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 // import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
+import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import SmsOutlinedIcon from '@mui/icons-material/SmsOutlined';
 import {
   TextField,
   Paper,
   Grid,
 } from '@mui/material';
-import { useLocation, useNavigate } from 'react-router-dom';
-
+import { useLocation } from 'react-router-dom';
+import { getRecipes } from '../app/sampleData';
+import { Recipe } from '../app/types';
 
 function RecommendationPageHeader() {
   const { search } = useLocation();
@@ -34,12 +35,11 @@ function RecommendationPageHeader() {
   );
 }
 
+interface PlatingProps {
+  recipe: Recipe;
+}
 
-const sharings = [
-
-]
-
-function Plating() {
+function Plating({ recipe }: PlatingProps) {
   const comments = [1];
   const likes = 23;
 
@@ -47,7 +47,7 @@ function Plating() {
     <Paper>
       <div className='plating'>
         <div className='app-container'>
-          <img src={'sample.png'} alt='여기에 그림이 들어갈 예정'></img>
+          <img src={recipe.img} alt='여기에 그림이 들어갈 예정'></img>
         </div>
         <Grid container>
           <Grid item xs={4}>
@@ -71,20 +71,26 @@ function Plating() {
 }
 
 export default function RecommendationPage() {
+  const recipes = getRecipes();
+
   return (
     <div className='recommendation-page'>
       <RecommendationPageHeader />
       <div className='app-body'>
         <Grid container>
           <Grid item xs={6}>
-            <Plating />
-            <Plating />
-            <Plating />
+            {
+              recipes.map((recipe, i) => {
+                return i % 2 === 0 ? <Plating recipe={recipe} /> : null;
+              })
+            }
           </Grid>
           <Grid item xs={6}>
-            <Plating />
-            <Plating />
-            <Plating />
+            {
+              recipes.map((recipe, i) => {
+                return i % 2 === 1 ? <Plating recipe={recipe} /> : null;
+              })
+            }
           </Grid>
         </Grid>
       </div>

@@ -1,6 +1,8 @@
 import * as React from 'react';
+import { useLocation } from 'react-router-dom';
 import './RecipePage.css';
-import HomeIcon from '@mui/icons-material/Home';
+
+// import HomeIcon from '@mui/icons-material/Home';
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined'; // 1) 요약
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined'; // 2) 공유
 import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined'; // 3) 책갈피
@@ -11,19 +13,20 @@ import {
   Grid,
 } from '@mui/material';
 
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import {
   // RECIPE_PAGE_PATH,
-  HOME_PAGE_PATH,
+  // HOME_PAGE_PATH,
   // STYLES_PAGE_PATH,
   // REPORT_PAGE_PATH,
 } from '../App';
-import { steps, tags, ingredients } from '../app/sampleData';
+import { getRecipes } from '../app/sampleData';
 
 function Banner() {
   return (
     <div className='Banner'>
       <div className='app-container'>
+        <img src={'./sample.png'} alt='여기에 그림이 들어갈 예정'></img>
         <img src={'sample.png'} alt='여기에 그림이 들어갈 예정'></img>
       </div>
     </div>
@@ -31,17 +34,33 @@ function Banner() {
 }
 
 function RecipeDetails() {
+  const { pathname } = useLocation();
+  const parts = pathname.split('/');
+  const recipeId = parseInt(parts[parts.length - 1]); //
+  const recipes = getRecipes();
+  const recipe = recipes[recipeId - 1];
+
   return (
     <div className='recipe-details'>
       <h1>
-        통감자 오븐구이
+        {recipe.name}
       </h1>
       <Grid container>
         <Grid xs={12}>
           <Button>남은 재료 레시피</Button>
         </Grid>
         {
-          steps.map((step, i) => {
+          recipe.ingredients.map((ingredient, i) => {
+            return (
+              <Grid item xs={6}>
+                <h3>{ingredient.name}</h3>
+                <p>{ingredient.name}</p>
+              </Grid>
+            );
+          })
+        }
+        {
+          recipe.steps.map((step, i) => {
             return (
               <React.Fragment>
                 <Grid xs={3}>
@@ -55,14 +74,12 @@ function RecipeDetails() {
           })
         }
       </Grid>
-    </div>
+    </div >
   );
 }
 
 function RecipePageFooter() {
-  const navigate = useNavigate();
-
-
+  // const navigate = useNavigate();
   return (
     <Grid container className='Footer'>
       <Grid item xs={3} spacing={2}>

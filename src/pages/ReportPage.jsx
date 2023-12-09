@@ -2,10 +2,11 @@ import React, { useEffect, useState, useMemo } from "react";
 import NewItemContainer from '../components/NewItem/NewItemContainer';
 import PocketContainer from "../components/Pocket/PocketContainer";
 // import NewItemContainer from "./components/NewItem/NewItemContainer";
-import "./styles/reset.css";
-import "./styles/font.css";
-import "./styles/button.css";
-import "./styles/common.css";
+// import "./styles/reset.css";
+// import "./styles/font.css";
+// import "./styles/button.css";
+// import "./styles/common.css";
+import './ReportPage.css';
 import { useCallback } from "react";
 
 export const ItemDispatchContext = React.createContext();

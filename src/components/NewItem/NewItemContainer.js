@@ -1,24 +1,24 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import NewItem from "./NewItem";
 import "./NewItemContainer.css";
 
 export const StopEditContext = React.createContext();
 
 const NewItemContainer = () => {
-  const [isEditing, setIsEditing] = useState(false);
+  const [isEditing, setIsEditing] = useState( false );
 
   const startEditingHandler = () => {
-    setIsEditing(true);
+    setIsEditing( true );
   };
 
   const stopEditingHandler = () => {
     // event.stopPropagation();
-    setIsEditing(false);
+    setIsEditing( false );
   };
 
-  const memoizedStopEdit = useMemo(() => {
+  const memoizedStopEdit = useMemo( () => {
     return { stopEditingHandler };
-  }, []);
+  }, [] );
 
   return (
     <div

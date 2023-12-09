@@ -6,12 +6,12 @@ import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined
 import RestaurantOutlinedIcon from '@mui/icons-material/RestaurantOutlined';
 // import RamenDiningOutlinedIcon from '@mui/icons-material/RamenDiningOutlined';
 // import SoupKitchenOutlinedIcon from '@mui/icons-material/SoupKitchenOutlined';
+import { getCategories, getRecipes, rankings } from '../app/sampleData';
 import {
   Grid,
   Paper,
   TextField,
 } from '@mui/material';
-
 import {
   RECIPE_PAGE_PATH,
   HOME_PAGE_PATH,
@@ -19,8 +19,6 @@ import {
   REPORT_PAGE_PATH,
 } from '../App';
 import { useNavigate } from 'react-router-dom';
-
-
 
 function HomePageHeader() {
   return (
@@ -40,68 +38,9 @@ function HomePageHeader() {
 }
 
 function HomePageBody() {
-  const categories = [
-    {
-      name: '한식',
-      img: '1한식.png',
-    },
-    {
-      name: '중식',
-      img: '2중식.png',
-    },
-    {
-      name: '일식',
-      img: '3일식.png',
-    },
-    {
-      name: '아시안',
-      img: '4아시안.png',
-    },
-    {
-      name: '양식',
-      img: '5양식.png',
-    },
-    {
-      name: '돈까쓰',
-      img: '6돈까쓰.png',
-    },
-    {
-      name: '분식',
-      img: '7분식.png',
-    },
-    {
-      name: '디저트',
-      img: '8디저트.png',
-    },
-  ];
-
-  const rankings = [
-    {
-      name: '엘라의 테이블',
-      amountSaved: '258,600원',
-    },
-    {
-      name: '짱아쫑아맘',
-      amountSaved: '212,400원',
-    },
-    {
-      name: '엘라의 밥상',
-      amountSaved: '3,258,600원',
-    },
-  ];
-
-  const recipes = [
-    {
-      id: 1,
-      description: '나혼다산다에 나온 간편 안주 대호평!'
-    },
-    {
-      id: 2,
-      description: '파이브가이즈 더현대 서울 오픈! 웨이팅 대신 집에서 땅콩기름 감자튀김과 햄버거를!'
-    },
-  ]
-
-
+  const navigate = useNavigate();
+  const categories = getCategories();
+  const recipes = getRecipes();
 
   return (
     <Grid
@@ -113,7 +52,7 @@ function HomePageBody() {
         categories.map((category) => {
           return (
             <Grid item xs={3} key={category.name}>
-              <Paper>
+              <Paper onClick={(e) => navigate(`/recipe?query=${category.name}`)}>
                 <div className='Body-category'>
                   <div className='app-container'>
                     <img src={category.img} alt='여기에 그림이 들어갈 예정'></img>
@@ -137,7 +76,7 @@ function HomePageBody() {
               recipes.map((recipe) => {
                 return (
                   <div>
-                    <a href={`/recipe?id=${recipe.id}`}>
+                    <a href={`/recipe/${recipe.id}`}>
                       <p>{recipe.description}</p>
                     </a>
                   </div>
@@ -151,7 +90,6 @@ function HomePageBody() {
       <Grid item xs={12} spacing={2}>
         <Paper>
           <div className='Body-card'>
-
             <div>
               <h1>이번달 절약 이벤트</h1>
             </div>
@@ -167,7 +105,6 @@ function HomePageBody() {
                   );
                 })
               }
-
             </Grid>
           </div>
         </Paper>

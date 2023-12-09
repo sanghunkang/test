@@ -2,37 +2,61 @@ import * as React from 'react';
 import {
   TextField,
   Grid,
+  Paper,
 } from '@mui/material';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+
+import { getRecipes } from '../app/sampleData';
+import { Recipe } from '../app/types';
+import {
+  HOME_PAGE_PATH,
+} from '../App';
+// import { useGetNewsTrendsQuery } from '../app/newsApi';
+
+interface RecipeRowProps {
+  recipe: Recipe;
+}
+
+function RecipeRow({ recipe }: RecipeRowProps) {
 
 
-function RecipeRow() {
+
   return (
-    <Grid container>
-      <Grid item className='app-container' xs={2}>
-        <img src={'sample.png'} alt='여기에 그림이 들어갈 예정'></img>
+    <Paper>
+      <Grid container>
+        <Grid item className='app-container' xs={2}>
+          <img src={recipe.img} alt='여기에 그림이 들어갈 예정'></img>
+        </Grid>
+        <Grid item className='app-container' xs={10}>
+          <a href={`/recipe/${recipe.id}`}>
+            {recipe.name}
+          </a>
+        </Grid>
       </Grid>
-      <Grid item className='app-container' xs={10}>
-        버섯장조림
-      </Grid>
-    </Grid>
+    </Paper>
   );
 }
 
 function RecipeListPageHeader() {
+  const navigate = useNavigate();
   const { search } = useLocation();
   const params = new URLSearchParams(search);
-  const style = params.get('style') || '';
+  const query = params.get('query') || '';
+
+
+  // const { data, isLoading } = useGetNewsTrendsQuery({ search: search });
+  // console.log(data);
+
 
   return (
     <div className='app-header'>
-      <div>
+      <div onClick={(e) => navigate(HOME_PAGE_PATH)}>
         <h1>Cook and Save</h1>
       </div>
       <div className='Header-input'>
         <TextField
           fullWidth
-          label={'#' + style}
+          label={'#' + query}
           variant="outlined"
         />
       </div>
@@ -41,12 +65,13 @@ function RecipeListPageHeader() {
 }
 
 function RecipeListPageBody() {
+  const recipes = getRecipes();
+
   return (
     <div className='app-body'>
       {
-        [1, 2, 3, 4].map((i) => <RecipeRow />)
+        recipes.map((recipe, i) => <RecipeRow recipe={recipe} />)
       }
-
     </div>
   );
 }
