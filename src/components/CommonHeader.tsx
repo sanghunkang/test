@@ -15,6 +15,15 @@ export function CommonHeader() {
   const query = params.get('query') || '';
 
   const [inputText, setInputText] = useState(query || '나는 배고프다');
+  const [isClicked, setIsClicked] = useState(false);
+
+  const handleClick = () => {
+    setIsClicked(true);
+    setTimeout(() => {
+      setIsClicked(false);
+    }, 300); // Reset the shadow after 300ms (adjust timing as needed)
+    navigate(HOME_PAGE_PATH);
+  };
 
   function handleKeyDownEnter() {
     // let url = pathname;
@@ -34,7 +43,9 @@ export function CommonHeader() {
 
   return (
     <div className='app-header'>
-      <div onClick={(e) => navigate(HOME_PAGE_PATH)}>
+      <div
+        className={`box ${isClicked ? 'clicked' : ''}`}
+        onClick={handleClick}>
         <h1>Cook and Save</h1>
       </div>
       <div className='Header-input'>
