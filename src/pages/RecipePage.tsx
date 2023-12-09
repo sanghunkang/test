@@ -21,17 +21,7 @@ import {
   // REPORT_PAGE_PATH,
 } from '../App';
 import { getRecipes } from '../app/sampleData';
-
-function Banner() {
-  return (
-    <div className='Banner'>
-      <div className='app-container'>
-        <img src={'./sample.png'} alt='여기에 그림이 들어갈 예정'></img>
-        <img src={'sample.png'} alt='여기에 그림이 들어갈 예정'></img>
-      </div>
-    </div>
-  )
-}
+import { Recipe } from '../app/types';
 
 function RecipeDetails() {
   const { pathname } = useLocation();
@@ -41,39 +31,55 @@ function RecipeDetails() {
   const recipe = recipes[recipeId - 1];
 
   return (
-    <div className='recipe-details'>
-      <h1>
-        {recipe.name}
-      </h1>
-      <Grid container>
-        <Grid xs={12}>
-          <Button>남은 재료 레시피</Button>
+    <div>
+
+
+      <div className='Banner'>
+        <div className='app-container'>
+          <img src='/sample.png' alt='여기에 그림이 들어갈 예정' />
+        </div>
+      </div>
+      <div className='recipe-details'>
+        <h1>
+          {recipe.name}
+        </h1>
+        <Grid container>
+          <Grid item xs={6}>
+            <p>xxxx</p>
+          </Grid>
+          <Grid item xs={6}>
+            <Button>남은 재료 레시피</Button>
+          </Grid>
         </Grid>
-        {
-          recipe.ingredients.map((ingredient, i) => {
-            return (
-              <Grid item xs={6}>
-                <h3>{ingredient.name}</h3>
-                <p>{ingredient.name}</p>
-              </Grid>
-            );
-          })
-        }
-        {
-          recipe.steps.map((step, i) => {
-            return (
-              <React.Fragment>
-                <Grid xs={3}>
-                  <h3>Step {i + 1}</h3>
+        <Grid container>
+          {
+            recipe.ingredients.map((ingredient, i) => {
+              return (
+                <Grid item xs={6}>
+                  <h3>{ingredient.name}</h3>
+                  <p>{ingredient.amount}</p>
                 </Grid>
-                <Grid xs={9}>
-                  <p>{step}</p>
-                </Grid>
-              </React.Fragment>
-            );
-          })
-        }
-      </Grid>
+              );
+            })
+          }
+        </Grid>
+        <Grid container>
+          {
+            recipe.steps.map((step, i) => {
+              return (
+                <React.Fragment>
+                  <Grid xs={3}>
+                    <h3>Step {i + 1}</h3>
+                  </Grid>
+                  <Grid xs={9}>
+                    <p>{step}</p>
+                  </Grid>
+                </React.Fragment>
+              );
+            })
+          }
+        </Grid>
+      </div >
     </div >
   );
 }
@@ -119,9 +125,9 @@ function RecipePageFooter() {
 };
 
 export default function RecipePage() {
+
   return (
     <div>
-      <Banner />
       <RecipeDetails />
       <RecipePageFooter />
     </div>

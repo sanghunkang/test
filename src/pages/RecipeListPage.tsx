@@ -23,13 +23,13 @@ function RecipeRow({ recipe }: RecipeRowProps) {
 
 
   return (
-    <Paper>
+    <Paper onClick={(e) => navigate(RECIPE_PAGE_PATH + `/${recipe.id}`)}>
       <Grid container>
         <Grid item className='app-container' xs={2}>
           <img src={recipe.img} alt='여기에 그림이 들어갈 예정'></img>
         </Grid>
         <Grid item className='app-container' xs={10}>
-          <p onClick={(e) => navigate(RECIPE_PAGE_PATH + `/${recipe.id}`)}>
+          <p>
             {recipe.name}
           </p>
         </Grid>
