@@ -14,11 +14,11 @@ const Item = ( props ) => {
   let fontStyleByAmountType = "fs-emphasis fc-green";
 
   const itemTitle = props.title;
-  let itemAmount = "+" + addComma( props.amount.toString() );
+  let itemAmount = addComma( props.amount.toString() );
 
   if ( props.amountType === "expense" ) {
-    fontStyleByAmountType = fontStyleByAmountType.replace( "green", "red" );
-    itemAmount = itemAmount.replace( "+", "-" );
+    fontStyleByAmountType = fontStyleByAmountType.replace( "green", "yellow" );
+    itemAmount = itemAmount.replace( "+", "" );
   }
 
   const itemClickHandler = useCallback( () => {
