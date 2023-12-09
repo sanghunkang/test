@@ -6,8 +6,11 @@
 }
 
 .Header-input {
-    color: #fff;
     padding: 20px;
+}
+
+.Header-input input {
+    background-color: #fff;
 }
 
 .Body-category {
