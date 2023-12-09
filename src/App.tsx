@@ -9,7 +9,7 @@ import { getAnalytics, logEvent } from "firebase/analytics";
 
 
 import HomePage from  './pages/HomePage';
-import RecipeListPage from './pages/RecipeListPage';
+import RecipeListPage from   './pages/RecipeListPage';
 import RecipePage from './pages/RecipePage';
 import StylesPage from './pages/StylesPage';
 import RecommendationPage from './pages/RecommendationPage';
