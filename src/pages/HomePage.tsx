@@ -10,8 +10,9 @@ import { getCategories, getRecipes, rankings } from '../app/sampleData';
 import {
   Grid,
   Paper,
-  TextField,
+  // TextField,
 } from '@mui/material';
+import { CommonHeader } from '../components/CommonHeader';
 import {
   RECIPE_PAGE_PATH,
   HOME_PAGE_PATH,
@@ -19,23 +20,6 @@ import {
   REPORT_PAGE_PATH,
 } from '../App';
 import { useNavigate } from 'react-router-dom';
-
-function HomePageHeader() {
-  return (
-    <div className='app-header'>
-      <div>
-        <h1>Cook and Save</h1>
-      </div>
-      <div className='Header-input'>
-        <TextField
-          fullWidth
-          label="Outlined"
-          variant="outlined"
-        />
-      </div>
-    </div>
-  );
-}
 
 function HomePageBody() {
   const navigate = useNavigate();
@@ -52,7 +36,7 @@ function HomePageBody() {
         categories.map((category) => {
           return (
             <Grid item xs={3} key={category.name}>
-              <Paper onClick={(e) => navigate(`/recipe?query=${category.name}`)}>
+              <Paper onClick={(e) => navigate(RECIPE_PAGE_PATH + `?query=${category.name}`)}>
                 <div className='Body-category'>
                   <div className='app-container'>
                     <img src={category.img} alt='여기에 그림이 들어갈 예정'></img>
@@ -173,7 +157,7 @@ function HomePageFooter() {
 export default function Home() {
   return (
     <div>
-      <HomePageHeader />
+      <CommonHeader />
       <HomePageBody />
       <HomePageFooter />
     </div>

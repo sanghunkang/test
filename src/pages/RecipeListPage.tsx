@@ -4,12 +4,13 @@ import {
   Grid,
   Paper,
 } from '@mui/material';
+import { CommonHeader } from '../components/CommonHeader';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { getRecipes } from '../app/sampleData';
 import { Recipe } from '../app/types';
 import {
-  HOME_PAGE_PATH,
+  RECIPE_PAGE_PATH
 } from '../App';
 // import { useGetNewsTrendsQuery } from '../app/newsApi';
 
@@ -18,7 +19,7 @@ interface RecipeRowProps {
 }
 
 function RecipeRow({ recipe }: RecipeRowProps) {
-
+  const navigate = useNavigate();
 
 
   return (
@@ -28,39 +29,12 @@ function RecipeRow({ recipe }: RecipeRowProps) {
           <img src={recipe.img} alt='여기에 그림이 들어갈 예정'></img>
         </Grid>
         <Grid item className='app-container' xs={10}>
-          <a href={`/recipe/${recipe.id}`}>
+          <p onClick={(e) => navigate(RECIPE_PAGE_PATH + `/${recipe.id}`)}>
             {recipe.name}
-          </a>
+          </p>
         </Grid>
       </Grid>
     </Paper>
-  );
-}
-
-function RecipeListPageHeader() {
-  const navigate = useNavigate();
-  const { search } = useLocation();
-  const params = new URLSearchParams(search);
-  const query = params.get('query') || '';
-
-
-  // const { data, isLoading } = useGetNewsTrendsQuery({ search: search });
-  // console.log(data);
-
-
-  return (
-    <div className='app-header'>
-      <div onClick={(e) => navigate(HOME_PAGE_PATH)}>
-        <h1>Cook and Save</h1>
-      </div>
-      <div className='Header-input'>
-        <TextField
-          fullWidth
-          label={'#' + query}
-          variant="outlined"
-        />
-      </div>
-    </div>
   );
 }
 
@@ -79,7 +53,7 @@ function RecipeListPageBody() {
 export default function RecipeListPage() {
   return (
     <div>
-      <RecipeListPageHeader />
+      <CommonHeader />
       <RecipeListPageBody />
     </div>
 
