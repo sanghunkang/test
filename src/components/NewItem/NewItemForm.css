@@ -57,12 +57,22 @@
   accent-color: #5D5FEF;
 }
 
+.new-item__form-actions button:first-child {
+  margin-right: 32px;
+}
+
 .new-item__form-actions {
   display: flex;
   justify-content: center;
-  align-items: center;
+  margin-top: 20px; /* 예시로 추가한 여백 */
 }
 
-.new-item__form-actions button:first-child {
-  margin-right: 32px;
+.btn-yellow {
+  background-color: #FFD700;
+  color: black;
+}
+
+.btn-white {
+  background-color: white;
+  color: black;
 }
