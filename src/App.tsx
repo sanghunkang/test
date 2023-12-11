@@ -15,6 +15,7 @@ import StylesPage from './pages/StylesPage';
 import RecommendationPage from './pages/RecommendationPage';
 import ReportPage from './pages/ReportPage';
 
+// import Paperbase from './components/Paperbase';
 import NotFound from './components/NotFound'
 
 export const HOME_PAGE_PATH = '/home';

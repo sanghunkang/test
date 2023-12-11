@@ -41,7 +41,7 @@ const Item = ( props ) => {
     <div className={itemStyleByAmountType} onClick={itemClickHandler}>
       <div>
         <DateLabel date={props.date} />
-
+        
         <div className="item__title">
           <button
             className="item__delete-button fs-tiny btn-navy"
@@ -54,6 +54,13 @@ const Item = ( props ) => {
         </div>
       </div>
       <div>
+        {props.amountType === "expense" && (
+          <div>
+            <strong className="fs-emphasis fc-purple" style={{ textAlign: "right", margin: 0 }}>
+              1000(Save)
+            </strong>
+          </div>
+        )}
         <strong className={fontStyleByAmountType}>{itemAmount}</strong>
       </div>
     </div>

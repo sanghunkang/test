@@ -15,6 +15,7 @@
   background-color: gold;
   color: white;
   text-align: center;
+  z-index: 999;
 }
 
 .app-body {
@@ -22,7 +23,7 @@
   top: 20vh;
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: 10px;
 }
 
 .app-footer {

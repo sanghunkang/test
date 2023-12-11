@@ -19,35 +19,35 @@ export const rankings: Ranking[] = [
 export const categories: Category[] = [
     {
       name: '한식',
-      img: '1한식.png',
+      img: '/1한식.png',
     },
     {
       name: '중식',
-      img: '2중식.png',
+      img: '/2중식.png',
     },
     {
       name: '일식',
-      img: '3일식.png',
+      img: '/3일식.png',
     },
     {
       name: '아시안',
-      img: '4아시안.png',
+      img: '/4아시안.png',
     },
     {
       name: '양식',
-      img: '5양식.png',
+      img: '/5양식.png',
     },
     {
       name: '돈까쓰',
-      img: '6돈까쓰.png',
+      img: '/6돈까쓰.png',
     },
     {
       name: '분식',
-      img: '7분식.png',
+      img: '/7분식.png',
     },
     {
       name: '디저트',
-      img: '8디저트.png',
+      img: '/8디저트.png',
     },
   ];
 
@@ -63,7 +63,7 @@ export const recipes: Recipe[] = [
     outcost: 10000,
     selfcost: 4000,
     description: '나혼다산다에 나온 간편 안주 대호평!',
-    img: 'sample.png',
+    img: '/sample.png',
     steps: [
       '감자는 껍질 째 깨끗이 씻은 후 오븐팬에 올려 올리브오일과 소금, 후춧가루를 뿌려 200도에서 50분 정도 구워주세요.\r\n(tip. 전자레인지 용기에 담아 랩을 씌운 후 레인지로 익히면 간단하답니다)',
       '베이컨은 1cm 길이로 자른 후 달군 팬에 노릇하게 구워주세요. 실파는 송송 썰어주세요.',
@@ -123,7 +123,22 @@ export const recipes: Recipe[] = [
     outcost: 10000,
     selfcost: 4000,
     description: '파이브가이즈 더현대 서울 오픈! 웨이팅 대신 집에서 땅콩기름 감자튀김과 햄버거를!',
-    img: '1한식.png',
+    img: '/1한식.png',
+    steps: [],
+    tags: [],
+    ingredients: [],
+  },
+  {
+    id: 3,
+    name: '{{여기에 텍스트 입력}}',
+    style: '{{여기에 텍스트 입력}}',
+    level: '중',
+    time: '15분',
+    source: '우리의식탁',
+    outcost: 10000,
+    selfcost: 4000,
+    description: '짜장이 땡길때?',
+    img: '/2중식.png',
     steps: [],
     tags: [],
     ingredients: [],

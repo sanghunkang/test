@@ -1,0 +1,38 @@
+.app-container img {
+    /* Ensure the image fits within the container */
+    width: 100%;
+    height: auto;
+    /* Other image styles */
+}
+
+.Header-input {
+    padding: 20px;
+}
+
+.Header-input input {
+    background-color: #fff;
+}
+
+.Body-category {
+    text-align: center;
+}
+
+.Body-card {
+    background-color: beige;
+    padding: 10px;
+}
+
+.box {
+    /* width: 150px;
+    height: 150px;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer; */
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+.clicked {
+    box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.3);
+}

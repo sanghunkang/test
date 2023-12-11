@@ -1,11 +1,10 @@
 .Banner {
-    position: fixed;
+    /* position: fixed; */
     left: 0;
     top: 0;
     width: 100%;
     height: 40vh;
     max-height: 40vh;
-    background-color: gold;
     color: white;
     text-align: center;
 }
@@ -16,10 +15,11 @@
 
 .recipe-details {
     position: relative;
-    top: 40vh;
+    top: 5vh;
     display: flex;
     flex-direction: column;
     padding: 20px;
+    margin-bottom: 20vh;
 }
 
 .Footer {
