@@ -9,18 +9,19 @@ export const newsApi = createApi({
   }),
   endpoints: (builder) => ({
     getNewsTrends: builder.query<t.NewsTrends, t.SearchReqParams>({
-      query: ({search}) => `news-trends?serach=${search}`,
+      query: ({search}) => `news-trends?search=${search}`,
     }),
     getSentimentTrends: builder.query<t.SentimentTrends, t.SearchReqParams>({
-      query: ({search}) => `sentiment-trends?serach=${search}`,
+      query: ({search}) => `sentiment-trends?search=${search}`,
     }),
-    // getRecipes: builder.query<t.Recipe[], t.SearchReqParams>({
-    //   query: 
-    // })
+    getRecipes: builder.query<t.Recipe[], t.SearchReqParams>({
+      query: ({search}) => `recommend_recipe?search=${search}`,
+    }),
   }),
 });
 
 export const { 
   useGetNewsTrendsQuery, 
   useGetSentimentTrendsQuery,
+  useGetRecipesQuery,
  } = newsApi;
