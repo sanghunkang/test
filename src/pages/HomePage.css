@@ -1,9 +1,10 @@
 .app-container img {
     /* Ensure the image fits within the container */
-    width: 100%;
+    width: 50%;
     height: auto;
     /* Other image styles */
 }
+
 
 .Header-input {
     padding: 20px;
@@ -16,4 +17,29 @@
 .Body-card {
     background-color: beige;
     padding: 10px;
+    h1 {
+        font-size: 22px; /* 폰트 사이즈를 원하는 크기로 조절하세요 */
+        /* background-color:  yellow; */
+        display: inline-block;
+        border-radius:3px;
+        box-shadow: inset 0px -0.5em 0 0 rgba(247, 243, 0, 0.826); /* 형광펜 두께 조절 */
+      }
+
+    a {
+        font-size:15px;
+        
+    }
+    div {
+        font-size: 15px;
+    }
+
+    div p {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        -webkit-line-clamp: 1; /* 최대 2줄까지 표시 */
+    }
 }
+
+
+

@@ -112,7 +112,7 @@ export const recipes: Recipe[] = [
   },
   {
     id: 2,
-    name: '{{여기에 텍스트 입력}}',
+    name: '{{여기에 텍스트 경민 테스트 입력}}',
     style: '{{여기에 텍스트 입력}}',
     level: '중',
     time: '15분',
