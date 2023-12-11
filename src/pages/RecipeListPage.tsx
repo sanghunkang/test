@@ -1,18 +1,18 @@
 import * as React from 'react';
 import {
+  Box,
   TextField,
   Grid,
   Paper,
 } from '@mui/material';
+import CircularProgress from '@mui/material/CircularProgress';
 import { CommonHeader } from '../components/CommonHeader';
 import { useLocation, useNavigate } from 'react-router-dom';
-
-import { getRecipes } from '../app/sampleData';
 import { Recipe } from '../app/types';
 import {
   RECIPE_PAGE_PATH
 } from '../App';
-// import { useGetNewsTrendsQuery } from '../app/newsApi';
+import { useGetRecipesQuery } from '../app/newsApi';
 
 interface RecipeRowProps {
   recipe: Recipe;
@@ -39,7 +39,19 @@ function RecipeRow({ recipe }: RecipeRowProps) {
 }
 
 function RecipeListPageBody() {
-  const recipes = getRecipes();
+  const { data, isLoading } = useGetRecipesQuery({ search: '짬뽕' });
+  // console.log(data);
+  if (isLoading || !data) {
+    return (
+      <Box sx={{
+        p: 3, textAlign: 'center'
+      }}>
+        <CircularProgress />
+      </Box >
+    );
+  }
+
+  const recipes = data;
 
   return (
     <div className='app-body'>
