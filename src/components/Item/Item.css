@@ -6,6 +6,7 @@
   margin-bottom: 20px;
   box-shadow: rgb(0 0 0 / 10%) 0px 4px 12px;
   cursor: pointer;
+  width: 100%;
 }
 
 .item strong {
@@ -46,5 +47,5 @@
 }
 
 .expense {
-  border-right: 5px solid #FF5B5B;
+  border-right: 5px solid #FFD700;
 }
