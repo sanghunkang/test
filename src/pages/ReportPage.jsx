@@ -8,6 +8,8 @@ import PocketContainer from "../components/Pocket/PocketContainer";
 // import "./styles/common.css";
 import './ReportPage.css';
 import { useCallback } from "react";
+import { HomePageFooter } from './HomePage';
+
 
 export const ItemDispatchContext = React.createContext();
 
@@ -70,6 +72,7 @@ export default function ReportPage() {
       >
         <PocketContainer items={items} isAddItem={isAddItem} />
         <NewItemContainer />
+        < HomePageFooter />
       </ItemDispatchContext.Provider>
     </>
   );

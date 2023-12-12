@@ -25,6 +25,7 @@ export type SentimentTrends = {
 
 export type Category = {
   name: string;
+  theme:string;
   img: string;
 }
 
@@ -58,6 +59,7 @@ export type Recipe = {
 export type RecommendRecipeParams = {
   id?: number;
   menu?: string;
+  theme?: string;
   ingredients?: string;
 }
 

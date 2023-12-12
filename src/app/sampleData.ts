@@ -19,34 +19,42 @@ export const rankings: Ranking[] = [
 export const categories: Category[] = [
     {
       name: '한식',
+      theme: '한식',
       img: '/1한식.png',
     },
     {
       name: '중식',
+      theme: '중식',
       img: '/2중식.png',
     },
     {
       name: '일식',
+      theme: '일식',
       img: '/3일식.png',
     },
     {
       name: '아시안',
+      theme: '퓨전',
       img: '/4아시안.png',
     },
     {
       name: '양식',
+      theme: '양식',
       img: '/5양식.png',
     },
     {
       name: '돈까쓰',
+      theme: '일식',
       img: '/6돈까쓰.png',
     },
     {
       name: '분식',
+      theme: '한식',
       img: '/7분식.png',
     },
     {
       name: '디저트',
+      theme: '간식',
       img: '/8디저트.png',
     },
   ];
