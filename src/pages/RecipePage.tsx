@@ -55,7 +55,7 @@ function RecipeDetails() {
     <div>
       <div className='Banner'>
         <div className='app-container'>
-          <img src={'../sample.png'} alt='여기에 그림이 들어갈 예정' />
+          <img src={recipe.url || '../sample.png'} alt='여기에 그림이 들어갈 예정' />
         </div>
       </div>
       <div className='recipe-details'>

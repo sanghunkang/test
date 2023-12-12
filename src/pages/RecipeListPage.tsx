@@ -32,7 +32,7 @@ function RecipeRow({ recipe }: RecipeRowProps) {
     <Paper style={{ marginBottom: '12px' }} onClick={(e) => navigate(RECIPE_PAGE_PATH + `/${recipe.id}`)}>
       <Grid container spacing={2}>
         <Grid item className='app-container' xs={4}>
-          <img src={recipe.img || 'sample.png'} alt={'x'} style={{ borderRadius: '12px', width: '100%' }} ></img>
+          <img src={recipe.url || 'sample.png'} alt={'x'} style={{ borderRadius: '12px', width: '100%' }} ></img>
         </Grid>
         <Grid item className='app-container' xs={8}>
           <p style={{ fontSize: '13px' }}>

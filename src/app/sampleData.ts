@@ -112,6 +112,7 @@ export const recipes: Recipe[] = [
         amount: '적당량',
       },
     ],
+    url: 'xx',
   },
   {
     id: 2,
@@ -127,6 +128,7 @@ export const recipes: Recipe[] = [
     steps: [],
     tags: [],
     ingredients: [],
+    url: 'xx',
   },
   {
     id: 3,
@@ -142,6 +144,7 @@ export const recipes: Recipe[] = [
     steps: [],
     tags: [],
     ingredients: [],
+    url: 'xx',
   },
 ];
 
