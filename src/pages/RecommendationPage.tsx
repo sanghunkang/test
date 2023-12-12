@@ -6,14 +6,17 @@ import './RecommendationPage.css';
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import SmsOutlinedIcon from '@mui/icons-material/SmsOutlined';
 import {
-  TextField,
+  Box,
   Paper,
   Grid,
 } from '@mui/material';
+import CircularProgress from '@mui/material/CircularProgress';
 import { CommonHeader } from '../components/CommonHeader';
 import { useLocation } from 'react-router-dom';
-import { getRecipes } from '../app/sampleData';
 import { Recipe } from '../app/types';
+import { useGetRecipesQuery } from '../app/newsApi';
+import { HomePageFooter } from './HomePage';
+
 
 interface PlatingProps {
   recipe: Recipe;
@@ -36,7 +39,7 @@ function Plating({ recipe }: PlatingProps) {
         </iframe> */}
 
         <div className='app-container'>
-          <img src={recipe.img} alt='여기에 그림이 들어갈 예정'></img>
+          <img src={recipe.url} alt='여기에 그림이 들어갈 예정'></img>
         </div>
         <Grid container>
           <Grid item xs={4}>
@@ -60,7 +63,30 @@ function Plating({ recipe }: PlatingProps) {
 }
 
 export default function RecommendationPage() {
-  const recipes = getRecipes();
+  const { search, pathname } = useLocation();
+  const parts = pathname.split('/');
+  const params = new URLSearchParams(search);
+
+  const queryParams = {
+    menu: params.get('menu') || '',
+    theme: params.get('theme') || '',
+    ingredients: params.get('ingredients') || '',
+  }
+  // const searchText = params.get('menu') || params.get('ingredients') || '';
+  console.log(queryParams)
+  const { data, isLoading } = useGetRecipesQuery(queryParams);
+
+  if (isLoading || !data) {
+    return (
+      <Box sx={{
+        p: 3, textAlign: 'center'
+      }}>
+        <CircularProgress />
+      </Box >
+    );
+  }
+
+  const recipes = data;
 
   return (
     <div className='recommendation-page'>
@@ -83,6 +109,7 @@ export default function RecommendationPage() {
           </Grid>
         </Grid>
       </div>
+      < HomePageFooter />
 
     </div>
   )

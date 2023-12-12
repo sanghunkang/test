@@ -36,7 +36,7 @@ function HomePageBody() {
         categories.map((category) => {
           return (
             <Grid item xs={3} key={category.name}>
-              <Paper onClick={(e) => navigate(RECIPE_PAGE_PATH + `?theme=${category.name}`)}>
+              <Paper onClick={(e) => navigate(RECIPE_PAGE_PATH + `?theme=${category.theme}`)}>
                 <div className='Body-category'>
                   <div className='app-container'>
                     <img src={category.img} alt='여기에 그림이 들어갈 예정'></img>

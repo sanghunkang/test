@@ -38,8 +38,8 @@ function RecipeRow({ recipe }: RecipeRowProps) {
           <p style={{ fontSize: '13px' }}>
             {recipe.name}
           </p>
-          <div style={{ fontSize: '10px', marginTop: '-7px', color: 'grey' }}><br />외식비용: {recipe.outcost} <span style={{ fontSize: '10px', color: 'black' }}>vs 요리비용: {recipe.selfcost}</span></div>
-          <div style={{ fontSize: '12px', marginTop: '-12px', color: 'red' }}><br />절약금액: {recipe.outcost - recipe.selfcost}↓</div>
+          <div style={{ fontSize: '10px', marginTop: '-7px', color: 'grey' }}><br />외식비용: {recipe.outcost}원 <span style={{ fontSize: '10px', color: 'black' }}>vs 요리비용: {recipe.selfcost}원</span></div>
+          <div style={{ fontSize: '12px', marginTop: '-12px', color: 'red' }}><br />절약금액: {recipe.outcost - recipe.selfcost}원↓</div>
           <div style={{ fontSize: '10px', marginTop: '-3px', color: 'grey' }}><br />{`${recipe.level} | ${recipe.time}`}</div>
         </Grid>
       </Grid>
@@ -54,16 +54,13 @@ function RecipeListPageBody() {
   const params = new URLSearchParams(search);
 
   const queryParams = {
-    menu: params.get('menu') || '짬뽕',
+    menu: params.get('menu') || '',
+    theme: params.get('theme') || '',
     ingredients: params.get('ingredients') || '',
   }
   // const searchText = params.get('menu') || params.get('ingredients') || '';
   console.log(queryParams)
   const { data, isLoading } = useGetRecipesQuery(queryParams);
-
-
-
-
 
   if (isLoading || !data) {
     return (

@@ -76,7 +76,7 @@ function RecipeDetails() {
             <h3>배달비용</h3>
           </Grid>
           <Grid item xs={3}>
-            <p>{50000}원</p>
+            <p>{recipe.outcost}원</p>
           </Grid>
         </Grid>
         <Grid container>
@@ -90,7 +90,7 @@ function RecipeDetails() {
             <h3>요리비용</h3>
           </Grid>
           <Grid item xs={3}>
-            <p>{7000}원</p>
+            <p>{recipe.selfcost}원</p>
           </Grid>
         </Grid>
         <Divider />

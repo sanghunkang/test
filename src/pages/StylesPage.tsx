@@ -32,7 +32,7 @@ function Style({ style }: StyleProps) {
 
   return (
     <Paper className='style'>
-      <Grid container spacing={1} onClick={(e) => navigate(RECOMMENDATION_PAGE_PATH + `?query=${style}`)}>
+      <Grid container spacing={1} onClick={(e) => navigate(RECOMMENDATION_PAGE_PATH + `?theme=${style}`)}>
         <Grid item xs={11}>
           <h3>#{style}</h3>
         </Grid>
