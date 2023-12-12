@@ -37,7 +37,7 @@ export function CommonHeader() {
     // logEvent(analytics, "search", { inputText })
 
 
-    navigate(RECIPE_PAGE_PATH + `?query=${inputText}`);
+    navigate(RECIPE_PAGE_PATH + `?menu=${inputText}`);
   };
   // const { data, isLoading } = useGetNewsTrendsQuery({ search: search });
   // console.log(data);
