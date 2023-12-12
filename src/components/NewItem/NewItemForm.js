@@ -7,6 +7,8 @@ import {
 } from "../../utils/numberUtils.js";
 import { StopEditContext } from "./NewItemContainer.js";
 import "./NewItemForm.css";
+import "../../button.css";
+import "../../font.css";
 
 const NewItemForm = () => {
   const [{ onAdd }, { nextItemId }] = useContext( ItemDispatchContext );

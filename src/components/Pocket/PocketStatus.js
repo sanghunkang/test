@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { addComma } from "../../utils/numberUtils";
 import { FilterContext } from "./PocketContainer";
 import "./PocketStatus.css";
+import "../../font.css";
 
 const PocketStatus = (props) => {
   const { filteredItems, filterBaseYear } = useContext(FilterContext);
