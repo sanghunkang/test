@@ -9,22 +9,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
-
-@media (min-width: 40px) {
-  /* PC 화면에서 적용될 스타일 */
-  
-
-  body {
-      width: 360px; /* 원하는 크기로 설정 */
-      
-      margin: 0 auto; /* 가운데 정렬 */
-  }
-  #root {
-
-    height: 100vh;
-    display: flex;
-    align-items: center;
-  }
-}
-

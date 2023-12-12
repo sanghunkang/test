@@ -16,7 +16,7 @@ import {
   Divider,
   Grid,
 } from '@mui/material';
-
+import { HomePageFooter } from './HomePage';
 import { useNavigate } from 'react-router-dom';
 import {
   RECIPE_PAGE_PATH,
@@ -30,8 +30,14 @@ import { Recipe } from '../app/types';
 function RecipeDetails() {
   const { pathname } = useLocation();
   const parts = pathname.split('/');
+  const recipeId = parseInt(parts[parts.length - 1]); // FIXME
+
+  // const queryParams = {
+  //   menu: params.get('menu') || '짬뽕',
+  //   ingredients: params.get('ingredients') || '',
+  // }
   const navigate = useNavigate();
-  const { data, isLoading } = useGetRecipesQuery({ id: 1 });
+  const { data, isLoading } = useGetRecipesQuery({ id: recipeId });
   // console.log(data);
   if (isLoading || !data) {
     return (
@@ -43,8 +49,7 @@ function RecipeDetails() {
     );
   }
 
-  const recipeId = parseInt(parts[parts.length - 1]); // FIXME
-  const recipe = data[0] // .filter((recipe) => recipe.id == recipeId)[0]; // FIXME
+  const recipe = data.filter((recipe) => recipe.id == recipeId)[0]; // FIXME
 
   return (
     <div>
@@ -135,7 +140,7 @@ function RecipeDetails() {
 function RecipePageFooter() {
   // const navigate = useNavigate();
   return (
-    <Grid container className='Footer'>
+    <Grid container className='app-footer'>
       <Grid item xs={3} spacing={2}>
         <div>
           <DescriptionOutlinedIcon sx={{ fontSize: '32px' }} />
@@ -177,7 +182,7 @@ export default function RecipePage() {
   return (
     <div>
       <RecipeDetails />
-      <RecipePageFooter />
+      <HomePageFooter />
     </div>
   );
 }

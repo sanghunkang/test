@@ -8,7 +8,8 @@
 }
 
 .app-header {
-  position: auto;
+  /* position: auto; */
+  position: fixed;
   left: 0;
   top: 0;
   width: 100%;
@@ -20,24 +21,27 @@
 
 .app-body {
   position: relative;
-  top: 0vh;
+  /* top: 0vh; */
+  top: 16vh;
   display: flex;
   flex-direction: column;
   padding: 10px;
 }
 
 .app-footer {
-  position: auto;
+  /* position: auto; */
+  position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
   min-height: 8vh;
   background-color: gold;
   color: white;
   text-align: center;
   padding: 5px;
-  font-size:1.6vh;
+  padding: 5px;
+  font-size: 1.6vh;
 }
 
 .app-container {
@@ -52,13 +56,12 @@
 }
 
 .app-container img {
-  max-width: 80%;
+  min-width: 100%;
   /* Restrict the image width to fit container */
-  max-height: 80%;
+  max-height: 100%;
   /* Restrict the image height to fit container */
   display: block;
   /* Ensure image is a block element */
   /* Optionally center the image horizontally */
   margin: 0 auto;
 }
-
