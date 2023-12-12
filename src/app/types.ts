@@ -44,11 +44,20 @@ export type Recipe = {
   style: string;
   level: string;
   time: string;
+  source: string;
+  outcost: number;
+  selfcost: number;
   img: string;
   description: string;
   tags: string[];
   steps: string[];
   ingredients: Ingredient[];
+}
+
+export type RecommendRecipeParams = {
+  id?: number;
+  menu?: string;
+  ingredients?: string;
 }
 
 // export type Recipes = {

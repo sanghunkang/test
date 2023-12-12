@@ -8,8 +8,8 @@ import { getAnalytics, logEvent } from "firebase/analytics";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 
-import HomePage from './pages/HomePage';
-import RecipeListPage from './pages/RecipeListPage';
+import HomePage from  './pages/HomePage';
+import RecipeListPage from   './pages/RecipeListPage';
 import RecipePage from './pages/RecipePage';
 import StylesPage from './pages/StylesPage';
 import RecommendationPage from './pages/RecommendationPage';

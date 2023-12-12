@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useState } from "react";
+import React, { useCallback, useContext, useState, useEffect } from "react";
 import { ItemDispatchContext } from '../../pages/ReportPage';
 import {
   enteredOnlyNumber,
@@ -7,14 +7,13 @@ import {
 } from "../../utils/numberUtils.js";
 import { StopEditContext } from "./NewItemContainer.js";
 import "./NewItemForm.css";
+import "../../button.css";
+import "../../font.css";
 
 const NewItemForm = () => {
   const [{ onAdd }, { nextItemId }] = useContext( ItemDispatchContext );
   const { stopEditingHandler } = useContext( StopEditContext );
-
   const TITLE_SIZE = 35;
-
-  const [enteredDate, setEnteredDate] = useState( "" );
   const [enteredTitle, setEnteredTitle] = useState( "" );
   const [enteredAmount, setEnteredAmount] = useState( "" );
   const [enteredAmountType, setEnteredAmountType] = useState( "income" );
@@ -26,9 +25,13 @@ const NewItemForm = () => {
     return new Date().toISOString().substring( 0, 10 );
   }, [] );
 
-  const dateChangeHandler = ( event ) => {
-    setEnteredDate( event.target.value );
-  };
+  const [showPopup, setShowPopup] = useState(false);
+
+  const togglePopup = () => {
+    setShowPopup(!showPopup)
+    //console.log(showPopup)
+    //console.log(!showPopup)
+  }
 
   const titleChangeHandler = ( event ) => {
     let isSizeOver = event.target.value.length > TITLE_SIZE ? true : false;
@@ -47,9 +50,28 @@ const NewItemForm = () => {
     let amount = addComma( enteredOnlyNumber( event.target.value ) );
     setEnteredAmount( amount );
   };
-
+  const [today, setToday] = useState(new Date());
   const amountTypeChangeHandler = ( event ) => {
     setEnteredAmountType( event.target.value );
+  };
+
+  const [enteredDate, setEnteredDate] = useState('');
+
+  useEffect(() => {
+    // 컴포넌트가 마운트될 때 오늘 날짜로 설정
+    setToday(new Date());
+  }, []); // 빈 배열은 컴포넌트가 마운트될 때 한 번만 실행
+
+  const formatDate = (date) => {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  };
+  
+  const dateChangeHandler = (event) => {
+    // 입력된 날짜를 상태에 업데이트
+    setEnteredDate(event.target.value);
   };
 
   const submitHandler = ( event ) => {
@@ -57,11 +79,30 @@ const NewItemForm = () => {
 
     const enteredData = {
       id: nextItemId,
-      date: new Date( enteredDate ),
+      date: new Date( enteredDate || formatDate(today)),
       title: enteredTitle,
       amount: deleteComma( enteredAmount ),
       amountType: enteredAmountType,
+      savedamount: calsavedamnt(enteredTitle), 
     };
+
+    function calsavedamnt(enteredTitle)
+    {
+      let savedAmount;
+      if (enteredTitle === "홍합탕") {
+        savedAmount = 8355;
+      } else if (enteredTitle === "꼬막무침") {
+        savedAmount = 6650;
+      } else if (enteredTitle === "마라탕") {
+        savedAmount = 7035;
+      } else if (enteredTitle === "냉소바") {
+        savedAmount = 7033;
+      } else {
+        savedAmount = 1000;
+      }
+      //console.log('savedAmount:', savedAmount);
+      return savedAmount;
+    }
 
     onAdd( enteredData ); // 부모 컴포넌트로 enteredData 전달
 
@@ -80,10 +121,10 @@ const NewItemForm = () => {
         <h2 className="fs-normal fw-regular">날짜</h2>
         <input
           type="date"
-          value={enteredDate}
+          value={enteredDate || formatDate(today)}
           onChange={dateChangeHandler}
           min="2020-01-01"
-          max={getDate()}
+          max={formatDate(today)}
           required
         />
       </div>
@@ -102,7 +143,7 @@ const NewItemForm = () => {
           type="text"
           value={enteredTitle}
           onChange={titleChangeHandler}
-          placeholder="사용 내역을 입력해주세요."
+          placeholder="음식 이름을 입력해주세요."
           maxLength={TITLE_SIZE}
           required
         />
@@ -123,7 +164,7 @@ const NewItemForm = () => {
           type="text"
           value={enteredAmount}
           onChange={amountChangeHandler}
-          placeholder="금액을 입력해주세요."
+          placeholder="1인분 기준으로 사용하신 금액을 입력해주세요."
           maxLength="11"
           required
         />
@@ -161,17 +202,13 @@ const NewItemForm = () => {
       </div>
 
       <div className="new-item__form-actions">
-        <button type="submit" className="btn-yellow">
-          등록
-        </button>
-        <button
-          type="button"
-          className="btn-white"
-          onClick={stopEditingHandler}
-        >
-          취소
-        </button>
-      </div>
+      <button type="submit" onClick={togglePopup} className="btn-yellow">
+        등록
+      </button>
+      <button type="button" onClick={stopEditingHandler} className="btn-white">
+        취소
+      </button>
+    </div>
     </form>
   );
 };

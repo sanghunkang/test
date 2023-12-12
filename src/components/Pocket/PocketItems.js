@@ -39,6 +39,7 @@ const PocketItems = () => {
           date={item.date}
           title={item.title}
           amount={item.amount}
+          savedamount={item.savedamount}
           amountType={item.amountType}
         />
       ))}

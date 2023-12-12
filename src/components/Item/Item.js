@@ -14,7 +14,8 @@ const Item = ( props ) => {
   let fontStyleByAmountType = "fs-emphasis fc-green";
 
   const itemTitle = props.title;
-  let itemAmount = addComma( props.amount.toString() );
+  let itemAmount = addComma(props.amount?.toString() || "0");
+  let savedAmount = addComma(props.savedamount?.toString() || "0");
 
   if ( props.amountType === "expense" ) {
     fontStyleByAmountType = fontStyleByAmountType.replace( "green", "yellow" );
@@ -41,7 +42,7 @@ const Item = ( props ) => {
     <div className={itemStyleByAmountType} onClick={itemClickHandler}>
       <div>
         <DateLabel date={props.date} />
-
+        
         <div className="item__title">
           <button
             className="item__delete-button fs-tiny btn-navy"
@@ -54,7 +55,14 @@ const Item = ( props ) => {
         </div>
       </div>
       <div>
-        <strong className={fontStyleByAmountType}>{itemAmount}</strong>
+        {props.amountType === "expense" && (
+          <div>
+            <strong className="fs-emphasis fc-purple" style={{ textAlign: "right", margin: 0 }}>
+              {savedAmount}원 절약
+            </strong>
+          </div>
+        )}
+        <strong className={fontStyleByAmountType}>{itemAmount}원</strong>
       </div>
     </div>
   );
