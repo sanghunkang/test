@@ -1,19 +1,21 @@
 import { useState } from 'react';
 import {
-  TextField,
+  TextField, InputAdornment, IconButton
 } from '@mui/material';
 import { useLocation, useNavigate } from 'react-router-dom';
+import SearchIcon from '@mui/icons-material/Search';
+
 import {
   HOME_PAGE_PATH, RECIPE_PAGE_PATH,
 } from '../App';
 import './CommonHeader.css'
-
+// export default () => <SearchIcon />;
 export function CommonHeader() {
   const navigate = useNavigate();
   const { search } = useLocation();
   const params = new URLSearchParams(search);
   const query = params.get('query') || params.get('menu') || params.get('ingredients') || '';
-
+  // <SearchIcon />
   const [inputText, setInputText] = useState(query || '나는 배고프다');
   const [isClicked, setIsClicked] = useState(false);
 
@@ -46,9 +48,10 @@ export function CommonHeader() {
       <div
         className={`box ${isClicked ? 'clicked' : ''}`}
         onClick={handleClick}>
-        <h1>Cook and Save</h1>
+        <h1 style={{ fontFamily: 'Segoe Script' }}>Cook and Save</h1>
       </div>
       <div className='Header-input'>
+
         <TextField
           fullWidth
           label={'#' + query}
@@ -61,6 +64,11 @@ export function CommonHeader() {
             if (e.key === 'Enter') {
               handleKeyDownEnter();
             }
+          }}
+          InputProps={{
+            startAdornment: (
+              <SearchIcon />
+            ),
           }}
         />
       </div>

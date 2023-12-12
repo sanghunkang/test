@@ -30,7 +30,7 @@ function HomePageBody() {
     <Grid
       className='app-body'
       container
-      spacing={2}
+      spacing={1.3}
     >
       {
         categories.map((category) => {
@@ -123,7 +123,7 @@ function HomePageFooter() {
           />
         </div>
         <div>
-          레시피
+          재료별
         </div>
       </Grid>
       <Grid item xs={3}>
@@ -135,7 +135,7 @@ function HomePageFooter() {
           />
         </div>
         <div>
-          스타일
+          테마별
         </div>
       </Grid>
       <Grid item xs={3}>
@@ -146,7 +146,7 @@ function HomePageFooter() {
           />
         </div>
         <div>
-          마이페이지
+          절약리포트
         </div>
 
       </Grid>

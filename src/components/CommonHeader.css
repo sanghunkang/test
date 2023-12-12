@@ -1,16 +1,25 @@
 .app-container img {
     /* Ensure the image fits within the container */
-    width: 100%;
+    width: 70%;
     height: auto;
     /* Other image styles */
 }
 
+
 .Header-input {
-    padding: 20px;
+    padding: 10px;
+}
+
+/* 검색 아이콘에 오른쪽 패딩 추가 */
+.Header-input .MuiSvgIcon-root {
+    padding-right: 4px; /* 원하는 패딩 값으로 조정 */
+    
+    font-size : 1.5em;
 }
 
 .Header-input input {
     background-color: #fff;
+    
 }
 
 .Body-category {

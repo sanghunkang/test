@@ -3,6 +3,9 @@
 * {
     margin: 0;
     box-sizing: border-box;
+    a {
+        text-decoration: none;
+      }
 }
 
 body {
@@ -13,7 +16,7 @@ body {
     -webkit-user-select: none;
 
     font-family: 'Noto Sans KR', sans-serif;
-    color: #4B4B4B;
+    color: #c69191;
     /* background-color: #5D5FEF; */
 }
 
@@ -36,3 +39,4 @@ textarea:focus,
 select:focus {
     outline: none;
 }
+
