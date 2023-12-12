@@ -12,7 +12,7 @@ export function CommonHeader() {
   const navigate = useNavigate();
   const { search } = useLocation();
   const params = new URLSearchParams(search);
-  const query = params.get('query') || '';
+  const query = params.get('query') || params.get('menu') || params.get('ingredients') || '';
 
   const [inputText, setInputText] = useState(query || '나는 배고프다');
   const [isClicked, setIsClicked] = useState(false);

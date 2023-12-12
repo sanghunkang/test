@@ -54,6 +54,11 @@ export type Recipe = {
   ingredients: Ingredient[];
 }
 
+export type RecommendRecipeParams = {
+  menu?: string;
+  ingredients?: string;
+}
+
 // export type Recipes = {
 //   recipes: REcip 
 // }
