@@ -31,7 +31,7 @@ function RecipeDetails() {
   const { pathname } = useLocation();
   const parts = pathname.split('/');
   const navigate = useNavigate();
-  const { data, isLoading } = useGetRecipesQuery({ search: '짬뽕' });
+  const { data, isLoading } = useGetRecipesQuery({ menu: '짬뽕' });
   // console.log(data);
   if (isLoading || !data) {
     return (
@@ -45,8 +45,6 @@ function RecipeDetails() {
 
   const recipeId = parseInt(parts[parts.length - 1]); // FIXME
   const recipe = data.filter((recipe) => recipe.id == recipeId)[0]; // FIXME
-  const ingredients = recipe.ingredients.join(',')
-  console.log(recipeId, recipe);
 
   return (
     <div>
@@ -95,7 +93,7 @@ function RecipeDetails() {
           <Grid item xs={6}>
           </Grid>
           <Grid item xs={6}>
-            <Button onClick={(e) => navigate(RECIPE_PAGE_PATH + `?query=${recipe.ingredients.join(',')}`)}>
+            <Button onClick={(e) => navigate(RECIPE_PAGE_PATH + `?ingredients=${recipe.ingredients.join(',')}`)}>
               <h3>남은 재료 레시피</h3>
             </Button>
           </Grid>

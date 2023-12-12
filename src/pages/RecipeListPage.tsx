@@ -21,7 +21,6 @@ interface RecipeRowProps {
 function RecipeRow({ recipe }: RecipeRowProps) {
   const navigate = useNavigate();
 
-
   return (
     <Paper style={{ marginBottom: '12px' }} onClick={(e) => navigate(RECIPE_PAGE_PATH + `/${recipe.id}`)}>
       <Grid container spacing={2}>
@@ -41,9 +40,24 @@ function RecipeRow({ recipe }: RecipeRowProps) {
   );
 }
 
+
 function RecipeListPageBody() {
-  const { data, isLoading } = useGetRecipesQuery({ search: '짬뽕' });
-  // console.log(data);
+  const { search, pathname } = useLocation();
+  const parts = pathname.split('/');
+  const params = new URLSearchParams(search);
+
+  const queryParams = {
+    menu: params.get('menu') || '짬뽕',
+    ingredients: params.get('ingredients') || '',
+  }
+  // const searchText = params.get('menu') || params.get('ingredients') || '';
+  console.log(queryParams)
+  const { data, isLoading } = useGetRecipesQuery(queryParams);
+
+
+
+
+
   if (isLoading || !data) {
     return (
       <Box sx={{
