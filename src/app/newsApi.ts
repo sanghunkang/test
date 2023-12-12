@@ -15,8 +15,9 @@ export const newsApi = createApi({
       query: ({search}) => `sentiment-trends?search=${search}`,
     }),
     getRecipes: builder.query<t.Recipe[], t.RecommendRecipeParams>({
-      query: ({ menu, ingredients }) => {
+      query: ({ id, menu, ingredients }) => {
         let params = ''
+        if (id) params = `?id=${id}`;
         if (menu) params = `?menu=${menu}`;
         if (ingredients) params = `?ingredients=${ingredients}`;
         return `recommend_recipe${params}`;

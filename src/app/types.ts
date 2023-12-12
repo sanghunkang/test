@@ -55,6 +55,7 @@ export type Recipe = {
 }
 
 export type RecommendRecipeParams = {
+  id?: number;
   menu?: string;
   ingredients?: string;
 }
