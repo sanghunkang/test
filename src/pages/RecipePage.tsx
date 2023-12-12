@@ -31,7 +31,7 @@ function RecipeDetails() {
   const { pathname } = useLocation();
   const parts = pathname.split('/');
   const navigate = useNavigate();
-  const { data, isLoading } = useGetRecipesQuery({ menu: '짬뽕' });
+  const { data, isLoading } = useGetRecipesQuery({ id: 1 });
   // console.log(data);
   if (isLoading || !data) {
     return (
@@ -44,13 +44,13 @@ function RecipeDetails() {
   }
 
   const recipeId = parseInt(parts[parts.length - 1]); // FIXME
-  const recipe = data.filter((recipe) => recipe.id == recipeId)[0]; // FIXME
+  const recipe = data[0] // .filter((recipe) => recipe.id == recipeId)[0]; // FIXME
 
   return (
     <div>
       <div className='Banner'>
         <div className='app-container'>
-          <img src={recipe.img || '../sample.png'} alt='여기에 그림이 들어갈 예정' />
+          <img src={'../sample.png'} alt='여기에 그림이 들어갈 예정' />
         </div>
       </div>
       <div className='recipe-details'>
