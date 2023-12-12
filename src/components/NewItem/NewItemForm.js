@@ -29,8 +29,8 @@ const NewItemForm = () => {
 
   const togglePopup = () => {
     setShowPopup(!showPopup)
-    console.log(showPopup)
-    console.log(!showPopup)
+    //console.log(showPopup)
+    //console.log(!showPopup)
   }
 
   const titleChangeHandler = ( event ) => {
@@ -83,8 +83,26 @@ const NewItemForm = () => {
       title: enteredTitle,
       amount: deleteComma( enteredAmount ),
       amountType: enteredAmountType,
-      savedamount: 1000,
+      savedamount: calsavedamnt(enteredTitle), 
     };
+
+    function calsavedamnt(enteredTitle)
+    {
+      let savedAmount;
+      if (enteredTitle === "홍합탕") {
+        savedAmount = 8355;
+      } else if (enteredTitle === "꼬막무침") {
+        savedAmount = 6650;
+      } else if (enteredTitle === "마라탕") {
+        savedAmount = 7035;
+      } else if (enteredTitle === "냉소바") {
+        savedAmount = 7033;
+      } else {
+        savedAmount = 1000;
+      }
+      //console.log('savedAmount:', savedAmount);
+      return savedAmount;
+    }
 
     onAdd( enteredData ); // 부모 컴포넌트로 enteredData 전달
 
@@ -146,7 +164,7 @@ const NewItemForm = () => {
           type="text"
           value={enteredAmount}
           onChange={amountChangeHandler}
-          placeholder="사용하신 금액을 입력해주세요."
+          placeholder="1인분 기준으로 사용하신 금액을 입력해주세요."
           maxLength="11"
           required
         />
