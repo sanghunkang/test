@@ -52,6 +52,7 @@ export type Recipe = {
   tags: string[];
   steps: string[];
   ingredients: Ingredient[];
+  url: string;
 }
 
 export type RecommendRecipeParams = {
