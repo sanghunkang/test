@@ -68,7 +68,7 @@ function RecipeDetails() {
             <h3>외식비용</h3>
           </Grid>
           <Grid item xs={3}>
-            <p>{recipe.outcost.toLocaleString()}원</p>
+            <p>{(recipe.outcost / recipe.servings).toLocaleString()}원</p>
           </Grid>
         </Grid>
         <Grid container>
@@ -82,7 +82,7 @@ function RecipeDetails() {
             <h3>요리비용</h3>
           </Grid>
           <Grid item xs={3}>
-            <p>{recipe.selfcost.toLocaleString()}원</p>
+            <p>{(recipe.selfcost / recipe.servings).toLocaleString()}원</p>
           </Grid>
         </Grid>
         <Divider />
