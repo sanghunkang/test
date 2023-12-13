@@ -115,11 +115,21 @@ function RecipeDetails() {
 
         <Grid container>
           {
-            recipe.ingredients.map((ingredient, i) => {
+            recipe.grams.map((ingredient, i) => {
+              const [name, amount] = ingredient.split(' ');
+
               return (
                 <Grid item xs={6}>
-                  <h3>{ingredient.name}</h3>
-                  <p>{ingredient.amount}</p>
+                  <Grid container>
+                    <Grid item xs={6}>
+                      <h4>{name}</h4>
+
+                    </Grid>
+                    <Grid item xs={6}>
+                      <p>{amount}</p>
+
+                    </Grid>
+                  </Grid>
                 </Grid>
               );
             })
