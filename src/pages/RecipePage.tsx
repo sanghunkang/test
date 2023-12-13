@@ -99,7 +99,7 @@ function RecipeDetails() {
             </Button>
 
             <Button
-              onClick={(e) => window.location.href = 'https://www.youtube.com'}
+              onClick={(e) => window.location.href = 'https://youtu.be/w1TyPvPPg3s'}
               className="blinking-button" // blinking-button 클래스 추가
               style={{ color: 'red', fontWeight: 'bold' }}
             >
