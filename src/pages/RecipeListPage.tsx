@@ -38,8 +38,8 @@ function RecipeRow({ recipe }: RecipeRowProps) {
           <p style={{ fontSize: '13px' }}>
             {recipe.name}
           </p>
-          <div style={{ fontSize: '10px', marginTop: '-7px', color: 'grey' }}><br />외식비용: {(recipe.outcost / recipe.servings).toLocaleString()}원 <span style={{ fontSize: '10px', color: 'black' }}>vs 요리비용: {(recipe.selfcost / recipe.servings).toLocaleString()}원</span></div>
-          <div style={{ fontSize: '12px', marginTop: '-12px', color: 'red' }}><br />절약금액: {((recipe.outcost - recipe.selfcost) / recipe.servings).toLocaleString()}원↓</div>
+          <div style={{ fontSize: '10px', marginTop: '-7px', color: 'grey' }}><br />외식비용: {Math.round(recipe.outcost / recipe.servings).toLocaleString()}원 <span style={{ fontSize: '10px', color: 'black' }}>vs 요리비용: {Math.round(recipe.selfcost / recipe.servings).toLocaleString()}원</span></div>
+          <div style={{ fontSize: '12px', marginTop: '-12px', color: 'red' }}><br />절약금액: {Math.round((recipe.outcost - recipe.selfcost) / recipe.servings).toLocaleString()}원↓</div>
           <div style={{ fontSize: '10px', marginTop: '-3px', color: 'grey' }}><br />{`${recipe.level} | ${recipe.time}`}</div>
         </Grid>
       </Grid>
