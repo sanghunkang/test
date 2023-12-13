@@ -34,3 +34,22 @@
     padding: 20px;
 }
 
+/* "유투브로 이동" 버튼에 애니메이션 스타일을 적용합니다. */
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.blinking-button {
+    animation: blink 1s infinite;
+    /* 1초 간격으로 반복되는 애니메이션 */
+}

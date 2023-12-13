@@ -3,9 +3,9 @@ import { useLocation } from 'react-router-dom';
 import './RecipePage.css';
 
 // import HomeIcon from '@mui/icons-material/Home';
-import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined'; // 1) 요약
-import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined'; // 2) 공유
-import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined'; // 3) 책갈피
+// import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined'; // 1) 요약
+// import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined'; // 2) 공유
+// import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined'; // 3) 책갈피
 // import CollectionsBookmarkOutlinedIcon from '@mui/icons-material/CollectionsBookmarkOutlined'; // 3) 책갈피
 import TextsmsOutlinedIcon from '@mui/icons-material/TextsmsOutlined'; // 4) 노트보기
 import CircularProgress from '@mui/material/CircularProgress';
@@ -25,20 +25,14 @@ import {
   // REPORT_PAGE_PATH,
 } from '../App';
 import { useGetRecipesQuery } from '../app/newsApi';
-import { Recipe } from '../app/types';
 
 function RecipeDetails() {
   const { pathname } = useLocation();
   const parts = pathname.split('/');
   const recipeId = parseInt(parts[parts.length - 1]); // FIXME
-
-  // const queryParams = {
-  //   menu: params.get('menu') || '짬뽕',
-  //   ingredients: params.get('ingredients') || '',
-  // }
   const navigate = useNavigate();
   const { data, isLoading } = useGetRecipesQuery({ id: recipeId });
-  // console.log(data);
+
   if (isLoading || !data) {
     return (
       <Box sx={{
@@ -76,7 +70,7 @@ function RecipeDetails() {
             <h3>배달비용</h3>
           </Grid>
           <Grid item xs={3}>
-            <p>{recipe.outcost}원</p>
+            <p>{recipe.outcost.toLocaleString()}원</p>
           </Grid>
         </Grid>
         <Grid container>
@@ -90,7 +84,7 @@ function RecipeDetails() {
             <h3>요리비용</h3>
           </Grid>
           <Grid item xs={3}>
-            <p>{recipe.selfcost}원</p>
+            <p>{recipe.selfcost.toLocaleString()}원</p>
           </Grid>
         </Grid>
         <Divider />
@@ -100,6 +94,14 @@ function RecipeDetails() {
           <Grid item xs={6}>
             <Button onClick={(e) => navigate(RECIPE_PAGE_PATH + `?ingredients=${recipe.ingredients.join(',')}`)}>
               <h3>남은 재료 레시피</h3>
+            </Button>
+            {/* "유투브로 이동" 버튼 스타일을 수정하고 애니메이션을 적용합니다. */}
+            <Button
+              onClick={(e) => window.location.href = 'https://www.youtube.com'}
+              className="blinking-button" // blinking-button 클래스 추가
+              style={{ color: 'red', fontWeight: 'bold', fontSize: '1.2em', margin: '0 auto' }}
+            >
+              노래로 듣기♬
             </Button>
           </Grid>
         </Grid>
@@ -136,46 +138,6 @@ function RecipeDetails() {
     </div >
   );
 }
-
-function RecipePageFooter() {
-  // const navigate = useNavigate();
-  return (
-    <Grid container className='app-footer'>
-      <Grid item xs={3} spacing={2}>
-        <div>
-          <DescriptionOutlinedIcon sx={{ fontSize: '32px' }} />
-        </div>
-        <div>
-          요약
-        </div>
-      </Grid>
-      <Grid item xs={3} spacing={2}>
-        <div>
-          <ShareOutlinedIcon sx={{ fontSize: '32px' }} />
-        </div>
-        <div>
-          공유
-        </div>
-      </Grid>
-      <Grid item xs={3} spacing={2}>
-        <div>
-          <BookmarkBorderOutlinedIcon sx={{ fontSize: '32px' }} />
-        </div>
-        <div>
-          책갈피
-        </div>
-      </Grid>
-      <Grid item xs={3} spacing={2}>
-        <div>
-          <TextsmsOutlinedIcon sx={{ fontSize: '32px' }} />
-        </div>
-        <div>
-          노트보기
-        </div>
-      </Grid>
-    </Grid>
-  );
-};
 
 export default function RecipePage() {
 
