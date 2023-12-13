@@ -8,6 +8,8 @@ import './RecipePage.css';
 // import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined'; // 3) 책갈피
 // import CollectionsBookmarkOutlinedIcon from '@mui/icons-material/CollectionsBookmarkOutlined'; // 3) 책갈피
 import TextsmsOutlinedIcon from '@mui/icons-material/TextsmsOutlined'; // 4) 노트보기
+import MusicNoteIcon from '@mui/icons-material/MusicNote';
+import YouTubeIcon from '@mui/icons-material/YouTube';
 import CircularProgress from '@mui/material/CircularProgress';
 import {
   Box,
@@ -87,20 +89,29 @@ function RecipeDetails() {
         </Grid>
         <Divider />
         <Grid container>
-          <Grid item xs={6}>
-          </Grid>
-          <Grid item xs={6}>
-            <Button onClick={(e) => navigate(RECIPE_PAGE_PATH + `?ingredients=${recipe.ingredients.join(',')}`)}>
-              <h3>남은 재료 레시피</h3>
-            </Button>
-            {/* "유투브로 이동" 버튼 스타일을 수정하고 애니메이션을 적용합니다. */}
+          <Grid item xs={7}>
             <Button
               onClick={(e) => window.location.href = 'https://www.youtube.com'}
               className="blinking-button" // blinking-button 클래스 추가
-              style={{ color: 'red', fontWeight: 'bold', fontSize: '1.2em', margin: '0 auto' }}
+              style={{ color: 'red', fontWeight: 'bold' }}
             >
-              노래로 듣기♬
+              <YouTubeIcon /><h4>영상 보기</h4>
             </Button>
+
+            <Button
+              onClick={(e) => window.location.href = 'https://www.youtube.com'}
+              className="blinking-button" // blinking-button 클래스 추가
+              style={{ color: 'red', fontWeight: 'bold' }}
+            >
+              <MusicNoteIcon /><h4>노래로 듣기</h4>
+            </Button>
+          </Grid>
+          <Grid item xs={5}>
+            <Button onClick={(e) => navigate(RECIPE_PAGE_PATH + `?ingredients=${recipe.ingredients.join(',')}`)}>
+              <h3>남은재료 레시피</h3>
+            </Button>
+            {/* "유투브로 이동" 버튼 스타일을 수정하고 애니메이션을 적용합니다. */}
+
           </Grid>
         </Grid>
         <Divider />
