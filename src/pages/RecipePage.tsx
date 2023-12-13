@@ -53,9 +53,7 @@ function RecipeDetails() {
         </div>
       </div>
       <div className='recipe-details'>
-        <p>
-          심심함을 달래기 위한 텍스트
-        </p>
+
         <h1>
           {recipe.name}
         </h1>
@@ -67,7 +65,7 @@ function RecipeDetails() {
             <p>{recipe.level}</p>
           </Grid>
           <Grid item xs={3}>
-            <h3>배달비용</h3>
+            <h3>외식비용</h3>
           </Grid>
           <Grid item xs={3}>
             <p>{recipe.outcost.toLocaleString()}원</p>
@@ -105,6 +103,16 @@ function RecipeDetails() {
             </Button>
           </Grid>
         </Grid>
+        <Divider />
+        <Grid container>
+          <Grid item xs={6}></Grid>
+          <p>
+            {recipe.description}
+          </p>
+        </Grid>
+        <Divider />
+
+
         <Grid container>
           {
             recipe.ingredients.map((ingredient, i) => {
