@@ -91,7 +91,7 @@ function RecipeDetails() {
         <Grid container>
           <Grid item xs={7}>
             <Button
-              onClick={(e) => window.location.href = 'https://www.youtube.com'}
+              onClick={(e) => window.location.href = 'https://youtu.be/N82hJpl5cMM?si=LzOwLnCqGSyK18Wa'}
               className="blinking-button" // blinking-button 클래스 추가
               style={{ color: 'red', fontWeight: 'bold' }}
             >
