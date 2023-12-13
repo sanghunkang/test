@@ -48,6 +48,7 @@ export type Recipe = {
   source: string;
   outcost: number;
   selfcost: number;
+  servings: number;
   img: string;
   description: string;
   tags: string[];
