@@ -70,9 +70,16 @@ export default function ReportPage() {
       <ItemDispatchContext.Provider
         value={[memoizedDispatches, memoizedNextItemId]}
       >
-        <PocketContainer items={items} isAddItem={isAddItem} />
-        <NewItemContainer />
-        < HomePageFooter />
+        <div className='New-Item'>
+          <NewItemContainer />
+        </div>
+        <div className='Pocket-container'>
+          <PocketContainer items={items} isAddItem={isAddItem} />
+        </div>
+        
+        <div className='Home-Footer'>
+          < HomePageFooter />
+        </div>
       </ItemDispatchContext.Provider>
     </>
   );

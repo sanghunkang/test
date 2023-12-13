@@ -9,6 +9,10 @@
 }
 
 body {
+    
+
+  
+    padding-top: 0px;
     -webkit-touch-callout: none;
     user-select: none;
     -moz-user-select: none;
@@ -40,3 +44,40 @@ select:focus {
     outline: none;
 }
 
+
+.New-Item {
+    overflow: hidden;
+    position: auto;
+    left: 0;
+    bottom: 0;
+    width : auto;
+    padding-bottom: 0px; /* Adjust as needed based on the height of your footer */
+    padding-left: 0;
+    padding-right: 0;
+    
+
+}
+.Pocket-container {
+    overflow: hidden;
+    position: auto;
+    left: -10%;
+    bottom: 0;
+    padding-top: 0px;
+    padding-bottom: 0px; /* Adjust as needed based on the height of your footer */
+    width : auto;
+    
+    padding-right: 0;
+}
+
+
+.Home-Footer {
+    overflow: hidden;
+    position: auto;
+    left: 0;
+    bottom: 0;
+    width: 80vw;
+    min-height: 10vh;
+    /* z-index: 999; Set a high z-index value */
+    /* Add other styles as needed */
+}
+  /* ReportPage.css */
