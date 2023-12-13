@@ -54,6 +54,7 @@ export type Recipe = {
   tags: string[];
   steps: string[];
   ingredients: Ingredient[];
+  grams: string[];
   url: string;
 }
 
