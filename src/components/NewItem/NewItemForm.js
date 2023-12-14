@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useState, useEffect } from "react";
-import { ItemDispatchContext } from '../../pages/ReportPage';
+import { ItemDispatchContext } from '../../pages/ReportPage.jsx';
 import {
   enteredOnlyNumber,
   addComma,
@@ -9,6 +9,8 @@ import { StopEditContext } from "./NewItemContainer.js";
 import "./NewItemForm.css";
 import "../../button.css";
 import "../../font.css";
+
+const menudata = require('./MenuData');
 
 const NewItemForm = () => {
   const [{ onAdd }, { nextItemId }] = useContext( ItemDispatchContext );
@@ -89,8 +91,18 @@ const NewItemForm = () => {
     function calsavedamnt(enteredTitle)
     {
       let savedAmount;
-      if (enteredTitle === "홍합탕") {
-        savedAmount = 8355;
+      var index = menudata.indexOf(enteredTitle);
+      if (index !== -1) {
+        var menuName = menudata[index];
+        var savedPrice = menudata[index + 1];
+        console.log("메뉴: " + menuName + ", 절약한 가격: " + savedPrice);
+        savedAmount = savedPrice;
+      } else {
+        savedAmount = Math.round(deleteComma( enteredAmount ) * 1.3);
+      }
+/*
+      if (recipe.name === "홍합탕") {
+        savedAmount = 7645;
       } else if (enteredTitle === "꼬막무침") {
         savedAmount = 6650;
       } else if (enteredTitle === "마라탕") {
@@ -100,7 +112,7 @@ const NewItemForm = () => {
       } else {
         savedAmount = 1000;
       }
-      //console.log('savedAmount:', savedAmount);
+*/
       return savedAmount;
     }
 
